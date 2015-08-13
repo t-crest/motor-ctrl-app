@@ -45,6 +45,12 @@ entity patmos_top is
 		sys_pfc_ld_en : in std_logic;
 		sys_pfc_pfw : in std_logic;
 		sys_pfc_en : out std_logic;
+
+		-- RS485 for EnDat or BiSS 
+		drive0_endat_RS485_Data_Input : in std_logic;
+		drive0_endat_RS485_Data_Enable : out std_logic;
+		drive0_endat_RS485_Data_Out : out std_logic;
+		drive0_endat_RS485_Clk_Out : out std_logic;
 	
 		oUartPins_txd : out std_logic;
 		iUartPins_rxd : in  std_logic;
@@ -162,6 +168,11 @@ architecture rtl of patmos_top is
 			drive0_adc_pow_sync_dat_w       : in  std_logic                     := 'X';             -- sync_dat_w
 			drive0_adc_pow_overcurrent      : out std_logic;                                        -- overcurrent
 			clk_adc_in_clk                  : in  std_logic                     := 'X';             -- clk
+			drive0_biss_coe_ch1_MA          : out std_logic;                                        --             drive0_biss.coe_ch1_MA
+			drive0_biss_coe_ch1_MO          : out std_logic;                                        --                        .coe_ch1_MO
+			drive0_biss_coe_ch1_SL          : in  std_logic                     := '0';             --                        .coe_ch1_SL
+			drive0_biss_coe_ch1_EOT         : out std_logic;                                        --                        .coe_ch1_EOT
+			drive0_biss_get_sens            : in  std_logic                     := '0';             --                        .get_sens
 			drive0_doc_pwm_sync_out_export  : out std_logic;                                        -- export
 			drive0_doc_pwm_sync_in_export   : in  std_logic                     := 'X';             -- export
 			drive0_doc_adc_irq_irq          : out std_logic;                                        -- irq
@@ -291,6 +302,8 @@ architecture rtl of patmos_top is
 	signal drive0_adc_irq : std_logic;
 
 	signal pfc_control : std_logic_vector(1 downto 0);
+
+	signal enc_stb0_n, enc_stb0 : std_logic;
 begin
 	pll_inst : component altpll_patmos port map	(
 		inclk0	=> inclk0,
@@ -378,6 +391,8 @@ begin
            oSRAM_A, sram_out_dout_ena, SRAM_DQ, sram_out_dout, oSRAM_CE_N, oSRAM_OE_N, oSRAM_WE_N, oSRAM_LB_N, oSRAM_UB_N);
 	 
 	 drive0_igbt_err_in <= not drive0_sm_igbt_err;
+	 drive0_endat_RS485_Data_Enable <= '0';
+	 enc_stb0 <= not enc_stb0_n;
 	
 	drive0 : component DOC_Axis_Periphs_patmos
 	port map (
@@ -386,7 +401,7 @@ begin
 		drive0_adc_overcurrent          => overcurrent0,          --                        .overcurrent
 		drive0_pwm_carrier              => open,              --              drive0_pwm.carrier
 		drive0_pwm_carrier_latch        => open,        --                        .carrier_latch
-		drive0_pwm_encoder_strobe_n     => open,     --                        .encoder_strobe_n
+		drive0_pwm_encoder_strobe_n     => enc_stb0_n,     --                        .encoder_strobe_n
 		drive0_pwm_u_h                  => drive0_pwm_u_h,                  --                        .u_h
 		drive0_pwm_u_l                  => drive0_pwm_u_l,                  --                        .u_l
 		drive0_pwm_v_h                  => drive0_pwm_v_h,                  --                        .v_h
@@ -410,6 +425,11 @@ begin
 		drive0_adc_pow_sync_dat_w       => '0',       --                        .sync_dat_w
 		drive0_adc_pow_overcurrent      => open,      --                        .overcurrent
 		clk_adc_in_clk                  => sys_adc_feedback_clk,                  --              clk_adc_in.clk
+		drive0_biss_coe_ch1_MA			  => drive0_endat_RS485_Clk_Out, 			--    drive0_biss.MA
+		drive0_biss_coe_ch1_MO			  => drive0_endat_RS485_Data_Out, 			--               .MO
+		drive0_biss_coe_ch1_SL			  => drive0_endat_RS485_Data_Input,			--               .SL
+		drive0_biss_coe_ch1_EOT			  => open,
+		drive0_biss_get_sens				  => enc_stb0,								--					  .get_sens
 		drive0_doc_pwm_sync_out_export  => open,  -- drive0_doc_pwm_sync_out.export
 		drive0_doc_pwm_sync_in_export   => '0',   --  drive0_doc_pwm_sync_in.export
 		drive0_doc_adc_irq_irq          => drive0_adc_irq,          --      drive0_doc_adc_irq.irq
