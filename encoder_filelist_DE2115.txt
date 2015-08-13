@@ -1,0 +1,34 @@
+######################################################################################################
+# List of VHDL source files that must be analysed to specific libraries for the Drive On A Chip design
+######################################################################################################
+# They are contained in these file lists because Qsys does not allow libraries to be specified,
+# and also Quartus 12.1SP1 onwards removes these files from the qsf if they are already referenced
+# in a .qip file.
+######################################################################################################
+
+#File list for BiSS Encoder IP
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/biss_synth.vhd -library biss
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/biss_altera.vhd -library biss
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb_vcomponents.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mbz101.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb1.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mbz201.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb2.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb3.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mbz402.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb4.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb5.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb6.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb7.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb8.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb9.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mba.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mbb.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mbc.vhd -library mb
+set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb0.vhd -library mb
+#set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/mb119y.vhd -library mb
+
+#File list for EnDat Encoder IP
+#set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/resource_pkg_enc.vhd -library endat22
+#set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/resource_pkg_b_enc.vhd -library endat22
+#set_global_assignment -name VHDL_FILE DOC_Axis_Periphs_patmos/synthesis/submodules/endat5_pkg_enc.vhd -library endat22

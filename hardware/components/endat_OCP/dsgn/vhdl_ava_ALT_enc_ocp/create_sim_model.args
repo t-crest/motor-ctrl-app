@@ -1,0 +1,31 @@
+ENDAT22_S
+--source endat5_pkg_enc.vhd
+--source resource_pkg_enc.vhd
+--source resource_pkg_b_enc.vhd
+--source oem_enc.vhd
+--source spw_enc.vhd
+--source statreg_8x_enc.vhd
+--source statreg2_8x_enc.vhd
+--source sync_port_dec_rtl_enc.vhd
+--source time_table_enc.vhd
+--source timer_1us_enc.vhd
+--source timer_50ms_enc.vhd
+--source uc16_if_rtl_enc.vhd
+--source regist2_enc.vhd
+--source regist_8x1_enc.vhd
+--source regist_8x_enc.vhd
+--source regist_enc.vhd
+--source psw_enc.vhd
+--source inpff_enc.vhd
+--source eclkgen_enc.vhd
+--source counter_par_enc.vhd
+--source control_enc.vhd
+--source digfilt_par2_enc.vhd
+--source endat22_kernel_enc.vhd
+--source endat22_intreg_enc.vhd
+--source endat22_intapb_enc.vhd
+--source avalon_enc.vhd
+--source endat22_ava_ALT_ent_enc.vhd
+--source endat22_s_behav_enc.vhd
+--simgen
+--simgen_parameter=CBX_HDL_LANGUAGE=VHDL

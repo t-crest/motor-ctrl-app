@@ -1,0 +1,1178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>datasheet for DOC_Monitor</title>
+  <style type="text/css">
+body { font-family:arial ;}
+a { text-decoration:underline ; color:#003000 ;}
+a:hover { text-decoration:underline ; color:0030f0 ;}
+td { padding : 5px ;}
+table.topTitle { width:100% ;}
+table.topTitle td.l { text-align:left ; font-weight: bold ; font-size:30px ;}
+table.topTitle td.r { text-align:right ; font-weight: bold ; font-size:16px ;}
+table.blueBar { width : 100% ; border-spacing : 0px ;}
+table.blueBar td { background:#0036ff ; font-size:12px ; color : white ; text-align : left ; font-weight : bold ;}
+table.blueBar td.l { text-align : left ;}
+table.blueBar td.r { text-align : right ;}
+table.items { width:100% ; border-collapse:collapse ;}
+table.items td.label { font-weight:bold ; font-size:16px ; vertical-align:top ;}
+table.items td.mono { font-family:courier ; font-size:12px ; white-space:pre ;}
+div.label { font-weight:bold ; font-size:16px ; vertical-align:top ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ; font-size:12px ;}
+body { font-family:arial ;}
+table.x { font-family:courier ; border-collapse:collapse ; padding:2px ;}
+table.x td { border:1px solid #bbb ;}
+td.tableTitle { font-weight:bold ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ;}
+table.grid td.tableTitle { font-weight:bold ; text-align:center ;}
+table.mmap { border-collapse:collapse ; text-size:11px ; border:1px solid #d8d8d8 ;}
+table.mmap td { border-color:#d8d8d8 ; border-width:1px ; border-style:solid ;}
+table.mmap td.empty { border-style:none ; background-color:#f0f0f0 ;}
+table.mmap td.slavemodule { text-align:left ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.slavem { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid none solid ;}
+table.mmap td.slaveb { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.mastermodule { text-align:center ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.masterlr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.masterl { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid solid ;}
+table.mmap td.masterm { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid none ;}
+table.mmap td.masterr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid none ;}
+table.mmap td.addr { font-family:courier ; font-size:9px ; text-align:right ;}
+table.connectionboxes { border-collapse:separate ; border-spacing:0px ; font-family:arial ;}
+table.connectionboxes td.from { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.to { font-size:9px ; font-style:italic ; vertical-align:top ; text-align:right ;}
+table.connectionboxes td.lefthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:right ;}
+table.connectionboxes td.righthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.righthandlabel { font-size:11px ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.neighbor { padding:3px ; border:1px solid black ; font-size: 11px ; background:#e8e8e8 ; vertical-align:center ; text-align:center ;}
+table.connectionboxes td.main { padding:8px ; border:1px solid black ; font-size: 14px ; font-weight:bold ; background:#ffffff ; vertical-align:center ; text-align:center ;}
+.parametersbox { border:1px solid #d0d0d0 ; display:inline-block ; max-height:160px ; overflow:auto ; width:360px ; font-size:10px ;}
+.flowbox { display:inline-block ;}
+.parametersbox table { font-size:10px ;}
+td.parametername { font-style:italic ;}
+td.parametervalue { font-weight:bold ;}
+div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; border-top:1px solid #707070 ; border-bottom:1px solid #707070 ; padding:20px ; margin:20px ; width:auto ;}</style>
+ </head>
+ <body>
+  <table class="topTitle">
+   <tr>
+    <td class="l">DOC_Monitor</td>
+    <td class="r">
+     <br/>
+     <br/>
+    </td>
+   </tr>
+  </table>
+  <table class="blueBar">
+   <tr>
+    <td class="l">2015.05.08.14:44:52</td>
+    <td class="r">Datasheet</td>
+   </tr>
+  </table>
+  <div style="width:100% ;  height:10px"> </div>
+  <div class="label">Overview</div>
+  <div class="greydiv">
+   <div style="display:inline-block ; text-align:left">
+    <table class="connectionboxes">
+     <tr>
+      <td class="lefthandwire">&#160;&#160;clk_int_80&#160;</td>
+      <td class="main" rowspan="4">DOC_Monitor</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="lefthandwire">&#160;&#160;clk_int_50&#160;</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+    </table>
+   </div><span style="display:inline-block ; width:28px"> </span>
+   <div style="display:inline-block ; text-align:left"><span>
+     <br/>All Components
+     <br/>&#160;&#160;
+     <a href="#module_IO_IN_Buttons"><b>IO_IN_Buttons</b>
+     </a> altera_avalon_pio 14.0
+     <br/>&#160;&#160;
+     <a href="#module_clock_crossing"><b>clock_crossing</b>
+     </a> altera_avalon_mm_clock_crossing_bridge 14.0
+     <br/>&#160;&#160;
+     <a href="#module_DOC_DC_Link"><b>DOC_DC_Link</b>
+     </a> ssg_emb_dc_ballast 1.1
+     <br/>&#160;&#160;
+     <a href="#module_DOC_DC_Link_P"><b>DOC_DC_Link_P</b>
+     </a> ssg_emb_dc_ballast 1.1
+     <br/>&#160;&#160;
+     <a href="#module_pio_pfc"><b>pio_pfc</b>
+     </a> altera_avalon_pio 14.0
+     <br/>&#160;&#160;
+     <a href="#module_sysid_0"><b>sysid_0</b>
+     </a> altera_avalon_sysid_qsys 14.0</span>
+   </div>
+  </div>
+  <div style="width:100% ;  height:10px"> </div>
+  <div class="label">Memory Map</div>
+  <table class="mmap">
+   <tr>
+    <td class="empty" rowspan="2"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_IO_IN_Buttons"><b>IO_IN_Buttons</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_DOC_DC_Link"><b>DOC_DC_Link</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_slave_0&#160;</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_DOC_DC_Link_P"><b>DOC_DC_Link_P</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_slave_0&#160;</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_pio_pfc"><b>pio_pfc</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_sysid_0"><b>sysid_0</b>
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td class="slaveb">control_slave&#160;</td>
+   </tr>
+  </table>
+  <a name="module_IO_IN_Buttons"> </a>
+  <div>
+   <hr/>
+   <h2>IO_IN_Buttons</h2>altera_avalon_pio v14.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_crossing">clock_crossing</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="7">IO_IN_Buttons</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">bitClearingEdgeCapReg</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">bitModifyingOutReg</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">captureEdge</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">direction</td>
+        <td class="parametervalue">Input</td>
+       </tr>
+       <tr>
+        <td class="parametername">edgeType</td>
+        <td class="parametervalue">RISING</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateIRQ</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">irqType</td>
+        <td class="parametervalue">LEVEL</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetValue</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">simDoTestBenchWiring</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">simDrivenValue</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">width</td>
+        <td class="parametervalue">4</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockRate</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_tri</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_out</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_in</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_do_test_bench_wiring</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_capture</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_edge_type</td>
+        <td class="parametervalue">RISING</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_irq_type</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_irq</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">BIT_CLEARING_EDGE_REGISTER</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">BIT_MODIFYING_OUTPUT_REGISTER</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">CAPTURE</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">DATA_WIDTH</td>
+        <td class="parametervalue">4</td>
+       </tr>
+       <tr>
+        <td class="parametername">DO_TEST_BENCH_WIRING</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">DRIVEN_SIM_VALUE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">EDGE_TYPE</td>
+        <td class="parametervalue">RISING</td>
+       </tr>
+       <tr>
+        <td class="parametername">FREQ</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_IN</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_OUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_TRI</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">IRQ_TYPE</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_VALUE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_clock_crossing"> </a>
+  <div>
+   <hr/>
+   <h2>clock_crossing</h2>altera_avalon_mm_clock_crossing_bridge v14.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_80">clk_int_80</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+      <td class="main" rowspan="23">clock_crossing</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s0_clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s0_reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;m0_clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;m0_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_IO_IN_Buttons">IO_IN_Buttons</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_DOC_DC_Link">DOC_DC_Link</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_slave_0</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_DOC_DC_Link_P">DOC_DC_Link_P</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_slave_0</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pio_pfc">pio_pfc</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_sysid_0">sysid_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;control_slave</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">DATA_WIDTH</td>
+        <td class="parametervalue">32</td>
+       </tr>
+       <tr>
+        <td class="parametername">SYMBOL_WIDTH</td>
+        <td class="parametervalue">8</td>
+       </tr>
+       <tr>
+        <td class="parametername">ADDRESS_WIDTH</td>
+        <td class="parametervalue">12</td>
+       </tr>
+       <tr>
+        <td class="parametername">SYSINFO_ADDR_WIDTH</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_AUTO_ADDRESS_WIDTH</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_ADDRESS_WIDTH</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">HDL_ADDR_WIDTH</td>
+        <td class="parametervalue">12</td>
+       </tr>
+       <tr>
+        <td class="parametername">ADDRESS_UNITS</td>
+        <td class="parametervalue">SYMBOLS</td>
+       </tr>
+       <tr>
+        <td class="parametername">BURSTCOUNT_WIDTH</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">MAX_BURST_SIZE</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">COMMAND_FIFO_DEPTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESPONSE_FIFO_DEPTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">MASTER_SYNC_DEPTH</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">SLAVE_SYNC_DEPTH</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_M0_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_S0_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">80000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEIVE</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone IV E</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_DOC_DC_Link"> </a>
+  <div>
+   <hr/>
+   <h2>DOC_DC_Link</h2>ssg_emb_dc_ballast v1.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_crossing">clock_crossing</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="10">DOC_DC_Link</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_slave_0</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_adc_in">clock_adc_in</a>
+      </td>
+      <td class="from">out_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock_adc</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_ADC_CLOCK_RATE</td>
+        <td class="parametervalue">20</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_DOC_DC_Link_P"> </a>
+  <div>
+   <hr/>
+   <h2>DOC_DC_Link_P</h2>ssg_emb_dc_ballast v1.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_crossing">clock_crossing</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="10">DOC_DC_Link_P</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_slave_0</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_adc_in">clock_adc_in</a>
+      </td>
+      <td class="from">out_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock_adc</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_ADC_CLOCK_RATE</td>
+        <td class="parametervalue">20</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_pio_pfc"> </a>
+  <div>
+   <hr/>
+   <h2>pio_pfc</h2>altera_avalon_pio v14.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_crossing">clock_crossing</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="7">pio_pfc</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">bitClearingEdgeCapReg</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">bitModifyingOutReg</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">captureEdge</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">direction</td>
+        <td class="parametervalue">InOut</td>
+       </tr>
+       <tr>
+        <td class="parametername">edgeType</td>
+        <td class="parametervalue">RISING</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateIRQ</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">irqType</td>
+        <td class="parametervalue">LEVEL</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetValue</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">simDoTestBenchWiring</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">simDrivenValue</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">width</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockRate</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_tri</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_out</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_in</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_do_test_bench_wiring</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_capture</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_edge_type</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_irq_type</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">derived_has_irq</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">BIT_CLEARING_EDGE_REGISTER</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">BIT_MODIFYING_OUTPUT_REGISTER</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">CAPTURE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">DATA_WIDTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">DO_TEST_BENCH_WIRING</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">DRIVEN_SIM_VALUE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">EDGE_TYPE</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">FREQ</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_IN</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_OUT</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">HAS_TRI</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">IRQ_TYPE</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_VALUE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_clock_adc_in"> </a>
+  <div>
+   <hr/>
+   <h2>clock_adc_in</h2>altera_clock_bridge v14.0
+   <br/>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">DERIVED_CLOCK_RATE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">EXPLICIT_CLOCK_RATE</td>
+        <td class="parametervalue">20</td>
+       </tr>
+       <tr>
+        <td class="parametername">NUM_CLOCK_OUTPUTS</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_sysid_0"> </a>
+  <div>
+   <hr/>
+   <h2>sysid_0</h2>altera_avalon_sysid_qsys v14.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clock_crossing">clock_crossing</a>
+      </td>
+      <td class="from">m0&#160;&#160;</td>
+      <td class="main" rowspan="7">sysid_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;control_slave</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_clk_int_50">clk_int_50</a>
+      </td>
+      <td class="from">clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">id</td>
+        <td class="parametervalue">13709566</td>
+       </tr>
+       <tr>
+        <td class="parametername">timestamp</td>
+        <td class="parametervalue">1431089092</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEIVE</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone IV E</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">ID</td>
+        <td class="parametervalue">13709566</td>
+       </tr>
+       <tr>
+        <td class="parametername">TIMESTAMP</td>
+        <td class="parametervalue">1431089092</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_clk_int_80"> </a>
+  <div>
+   <hr/>
+   <h2>clk_int_80</h2>clock_source v14.0
+   <br/>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">clockFrequency</td>
+        <td class="parametervalue">80000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockFrequencyKnown</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">inputClockFrequency</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetSynchronousEdges</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_clk_int_50"> </a>
+  <div>
+   <hr/>
+   <h2>clk_int_50</h2>clock_source v14.0
+   <br/>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">clockFrequency</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockFrequencyKnown</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">inputClockFrequency</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">resetSynchronousEdges</td>
+        <td class="parametervalue">NONE</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <table class="blueBar">
+   <tr>
+    <td class="l">generation took 0.00 seconds</td>
+    <td class="r">rendering took 0.02 seconds</td>
+   </tr>
+  </table>
+ </body>
+</html>

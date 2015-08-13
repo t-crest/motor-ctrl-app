@@ -1,0 +1,152 @@
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_TOOL_VERSION "14.0"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "DOC_Axis_Periphs" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../DOC_Axis_Periphs.sopcinfo"]
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name SLD_INFO "QSYS_NAME DOC_Axis_Periphs HAS_SOPCINFO 1 GENERATION_ID 1438934008"
+set_global_assignment -library "DOC_Axis_Periphs" -name MISC_FILE [file join $::quartus(qip_path) "../DOC_Axis_Periphs.cmp"]
+set_global_assignment -library "DOC_Axis_Periphs" -name SLD_FILE [file join $::quartus(qip_path) "DOC_Axis_Periphs.debuginfo"]
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_TARGETED_DEVICE_FAMILY "Cyclone IV E"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone IV E}"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_QSYS_MODE "UNKNOWN"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "DOC_Axis_Periphs" -name MISC_FILE [file join $::quartus(qip_path) "../../DOC_Axis_Periphs.qsys"]
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "RE9DX0F4aXNfUGVyaXBocw=="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "RE9DX0F4aXNfUGVyaXBocw=="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQzODkzNDAwOA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::RVA0Q0UxMTVGMjlDNw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQURDX0NMT0NLX1JBVEU=::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQURDX0NMT0NLX0RPTUFJTg==::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQURDX1JFU0VUX0RPTUFJTg==::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUEVSSVBIX0NMT0NLX1JBVEU=::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUEVSSVBIX0NMT0NLX0RPTUFJTg==::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "DOC_Axis_Periphs" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUEVSSVBIX1JFU0VUX0RPTUFJTg==::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "YWx0ZXJhX3Jlc2V0X2NvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIFJlc2V0IENvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MTQuMA=="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "TlVNX1JFU0VUX0lOUFVUUw==::MQ==::TnVtYmVyIG9mIGlucHV0cw=="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "T1VUUFVUX1JFU0VUX1NZTkNfRURHRVM=::ZGVhc3NlcnQ=::T3V0cHV0IFJlc2V0IFN5bmNocm9ub3VzIEVkZ2Vz"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "U1lOQ19ERVBUSA==::Mg==::U3luY2hyb25pemVyIGRlcHRo"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRVUVTVF9QUkVTRU5U::MA==::UmVzZXQgcmVxdWVzdCBsb2dpYyBlbmFibGU="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX1dBSVRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCB3YWl0IHRpbWU="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "TUlOX1JTVF9BU1NFUlRJT05fVElNRQ==::Mw==::TWluaW11bSByZXNldCBhc3NlcnRpb24gdGltZQ=="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX0VBUkxZX0RTUlRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCBkZWFzc2VydCB0aW1pbmc="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4w::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjA="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4x::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4y::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjI="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4z::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjM="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU40::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjQ="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU41::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjU="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU42::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjY="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU43::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjc="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU44::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjg="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU45::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjk="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEw"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEx"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMg==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEy"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMw==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEz"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE0"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE1"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU5QVVQ=::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcmVzZXRfaW5wdXRz"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QURBUFRfUkVTRVRfUkVRVUVTVA==::MA==::T25seSBhZGFwdCBvbmx5IHJlc2V0IHJlcXVlc3Q="
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "bWIxMTl5"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "QmlTUy1NYXN0ZXI="
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "aUMtSGF1cw=="
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "QmlTUy1NYXN0ZXIgSVA="
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "U2xhdmVz::MQ==::TnVtYmVyIG9mIGxvZ2ljYWwgZGF0YSBjaGFubmVscyAoU2xhdmVzKQ=="
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "TnVtUmVncw==::OA==::TnVtYmVyIG9mIFJlZ2lzdGVycyBmb3IgUmVnaXN0ZXIgYWNjZXNz"
+set_global_assignment -entity "mb119y" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "Y29uZHVpdF9zcGxpdHRlcg=="
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "Q29uZHVpdCBzcGxpdHRlcg=="
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "On"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MTQuMA=="
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "QSBjb25kdWl0IHNpZ25hbCBzcGxpdHRlcg=="
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "T1VUUFVUX05VTQ==::Mg==::TlVNX09GX09VVFBVVF9QT1JUUw=="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "c3NnX2VtYl9kc20="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "RHJpdmUgU3lzdGVtIE1vbml0b3I="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "YWNyb3NsYW4="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MS4y"
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "RHJpdmUgU3lzdGVtIE1vbml0b3I="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "aW5pdA==::MA==::aW5pdA=="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHJlY2g=::MQ==::cHJlY2g="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHJlcg==::Mg==::cHJlcg=="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cnVu::Mw==::cnVu"
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "ZXJyb3I=::NA==::ZXJyb3I="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHdtX2Rpc2FibGU=::MA==::cHdtX2Rpc2FibGU="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHdtX2VuYWJsZQ==::MQ==::cHdtX2VuYWJsZQ=="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHdtX2xvd2Vy::Mw==::cHdtX2xvd2Vy"
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "cHdtX2JvdGg=::Nw==::cHdtX2JvdGg="
+set_global_assignment -entity "ssg_emb_dsm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "c3NnX2VtYl9wd20="
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "UFdNIEludGVyZmFjZQ=="
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "YWNyb3NsYW4="
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MS4y"
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "TW90b3IgQ29udHJvbCBQV04gSW50ZXJmYWNl"
+set_global_assignment -entity "ssg_emb_pwm" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_NAME "c3NnX2VtYl9zZF9hZGM="
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DISPLAY_NAME "U2lnbWEtRGVsdGEgQURDIEludGVyZmFjZQ=="
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_AUTHOR "YWNyb3NsYW4="
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_VERSION "MS40"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_DESCRIPTION "TW90b3IgQ29udHJvbCBTaWdtYS1EZWx0YSBBREMgSW50ZXJmYWNl"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19DTE9DS19SQVRF::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "ssg_emb_sd_adc" -library "DOC_Axis_Periphs" -name IP_COMPONENT_PARAMETER "QVVUT19DTE9DS19BRENfQ0xPQ0tfUkFURQ==::MjAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "DOC_Axis_Periphs.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/biss_synth.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/biss_altera.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb_vcomponents.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbz101.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb1.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbz201.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb2.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb3.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbz402.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbz401.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb4.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb5.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb6.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb7.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb8.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb9.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mba.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbb.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mbc.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb0.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/mb119y.vhd"]
+set_global_assignment -library "DOC_Axis_Periphs" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/mb0.ocp"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/conduit_splitter.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_dsm.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_pwm.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_sd_adc.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_sd_adc_dec128.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_sd_adc_dec16.v"]
+set_global_assignment -library "DOC_Axis_Periphs" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ssg_emb_sd_adc_diff.v"]
+
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_TOOL_VERSION "14.0"
+set_global_assignment -entity "altera_reset_controller" -library "DOC_Axis_Periphs" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_TOOL_NAME "conduit_splitter"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_TOOL_VERSION "14.0"
+set_global_assignment -entity "conduit_splitter" -library "DOC_Axis_Periphs" -name IP_TOOL_ENV "Qsys"

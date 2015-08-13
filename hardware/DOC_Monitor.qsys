@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element $${FILENAME}
+   {
+   }
+   element DOC_DC_Link
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element DOC_DC_Link_P
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element FE_Clarke_Park_FixP_0
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element IO_IN_Buttons
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{output_language=VHDL, output_directory=C:\\altera\\91SP2}";
+         type = "String";
+      }
+   }
+   element avalon_regs_demo_DSPBA_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element DOC_DC_Link_P.avalon_slave_0
+   {
+      datum baseAddress
+      {
+         value = "512";
+         type = "String";
+      }
+   }
+   element DOC_DC_Link.avalon_slave_0
+   {
+      datum baseAddress
+      {
+         value = "256";
+         type = "String";
+      }
+   }
+   element clk_int_50
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element clk_int_80
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element clock_adc_in
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element clock_crossing
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element sysid_0.control_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element falconeye_example4_FE_Clarke_Park_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element pio_pfc
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element DOC_DC_Link_P.reset
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+   }
+   element clock_crossing.s0
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "33554432";
+         type = "long";
+      }
+   }
+   element IO_IN_Buttons.s1
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "768";
+         type = "String";
+      }
+   }
+   element pio_pfc.s1
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
+   element sysid_0
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="EP4CE115F29C7" />
+ <parameter name="deviceFamily" value="Cyclone IV E" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VHDL" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName" value="patmos.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="io_in_buttons_external_connection"
+   internal="IO_IN_Buttons.external_connection"
+   type="conduit"
+   dir="end">
+  <port name="in_port_to_the_IO_IN_Buttons" internal="in_port" />
+ </interface>
+ <interface
+   name="IO_OUT_Seven_Segment_external_connection"
+   internal=".external_connection" />
+ <interface
+   name="pio_pfc"
+   internal="pio_pfc.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface name="dc_link" internal="DOC_DC_Link.status" type="conduit" dir="end" />
+ <interface
+   name="dc_link_p"
+   internal="DOC_DC_Link_P.status"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="clk_adc_in"
+   internal="clock_adc_in.in_clk"
+   type="clock"
+   dir="end" />
+ <interface
+   name="avs_periph_slave"
+   internal="clock_crossing.s0"
+   type="avalon"
+   dir="end" />
+ <interface name="clk_80" internal="clk_int_80.clk_in" type="clock" dir="end" />
+ <interface
+   name="reset_80"
+   internal="clk_int_80.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <interface name="clk_50" internal="clk_int_50.clk_in" type="clock" dir="end" />
+ <interface
+   name="reset_50"
+   internal="clk_int_50.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <module
+   kind="altera_avalon_pio"
+   version="14.0"
+   enabled="1"
+   name="IO_IN_Buttons">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_avalon_mm_clock_crossing_bridge"
+   version="14.0"
+   enabled="1"
+   name="clock_crossing">
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="ADDRESS_WIDTH" value="12" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="10" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="COMMAND_FIFO_DEPTH" value="2" />
+  <parameter name="RESPONSE_FIFO_DEPTH" value="2" />
+  <parameter name="MASTER_SYNC_DEPTH" value="3" />
+  <parameter name="SLAVE_SYNC_DEPTH" value="3" />
+  <parameter name="AUTO_M0_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_S0_CLK_CLOCK_RATE" value="80000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+ </module>
+ <module
+   kind="ssg_emb_dc_ballast"
+   version="1.1"
+   enabled="1"
+   name="DOC_DC_Link">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_ADC_CLOCK_RATE" value="20" />
+ </module>
+ <module
+   kind="ssg_emb_dc_ballast"
+   version="1.1"
+   enabled="1"
+   name="DOC_DC_Link_P">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_ADC_CLOCK_RATE" value="20" />
+ </module>
+ <module kind="altera_avalon_pio" version="14.0" enabled="1" name="pio_pfc">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="direction" value="InOut" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="2" />
+  <parameter name="clockRate" value="50000000" />
+ </module>
+ <module
+   kind="altera_clock_bridge"
+   version="14.0"
+   enabled="1"
+   name="clock_adc_in">
+  <parameter name="DERIVED_CLOCK_RATE" value="0" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="20" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module
+   kind="altera_avalon_sysid_qsys"
+   version="14.0"
+   enabled="1"
+   name="sysid_0">
+  <parameter name="id" value="13709566" />
+  <parameter name="timestamp" value="0" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+ </module>
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_int_80">
+  <parameter name="clockFrequency" value="80000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_int_50">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="IO_IN_Buttons.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0300" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="DOC_DC_Link.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="DOC_DC_Link_P.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0200" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="pio_pfc.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="sysid_0.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clock_adc_in.out_clk"
+   end="DOC_DC_Link.clock_adc" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clock_adc_in.out_clk"
+   end="DOC_DC_Link_P.clock_adc" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_80.clk"
+   end="clock_crossing.s0_clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_80.clk_reset"
+   end="clock_crossing.s0_reset" />
+ <connection kind="clock" version="14.0" start="clk_int_50.clk" end="sysid_0.clk" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="clock_crossing.m0_clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="clock_crossing.m0_reset" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="sysid_0.reset" />
+ <connection kind="clock" version="14.0" start="clk_int_50.clk" end="pio_pfc.clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="pio_pfc.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="DOC_DC_Link.clock" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="DOC_DC_Link.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="DOC_DC_Link_P.clock" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="DOC_DC_Link_P.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="IO_IN_Buttons.clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="IO_IN_Buttons.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
+</system>

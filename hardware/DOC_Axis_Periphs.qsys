@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element $${FILENAME}
+   {
+   }
+   element DOC_ADC
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element DOC_ADC_POW
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element DOC_Biss
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element DOC_PWM
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element DOC_SM
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element FE_Clarke_Park_FixP_0
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element avalon_regs_demo_DSPBA_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element clk_adc
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element clk_periph
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element conduit_splitter_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element falconeye_example4_FE_Clarke_Park_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="EP4CE115F29C7" />
+ <parameter name="deviceFamily" value="Cyclone IV E" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VHDL" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName" value="patmos.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="doc_dc_link" internal=".conduit_end_0" />
+ <interface name="merged_resets_in_reset" internal=".in_reset" />
+ <interface name="sdram_wire" internal=".wire" />
+ <interface name="tri_state_bridge_bridge_0_out" internal=".out" />
+ <interface name="clk_adc" internal="clk_adc.clk_in" type="clock" dir="end" />
+ <interface name="reset" internal="clk_adc.clk_in_reset" type="reset" dir="end" />
+ <interface name="doc_adc" internal="DOC_ADC.conduit_end" />
+ <interface name="doc_pwm" internal="DOC_PWM.conduit_end" />
+ <interface name="doc_sm" internal="DOC_SM.conduit_end" />
+ <interface name="doc_dc_link_avs" internal=".avalon_slave_0" />
+ <interface name="clk_periph" internal="clk_periph.clk_in" type="clock" dir="end" />
+ <interface
+   name="reset_periph"
+   internal="clk_periph.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="doc_adc_avs"
+   internal="DOC_ADC.avalon_slave"
+   type="avalon"
+   dir="end" />
+ <interface name="doc_adc_irq" internal="DOC_ADC.irq" type="interrupt" dir="end" />
+ <interface
+   name="doc_pwm_avs"
+   internal="DOC_PWM.avalon_slave_0"
+   type="avalon"
+   dir="end" />
+ <interface name="doc_pwm_start4" internal="DOC_PWM.start4" />
+ <interface name="doc_pwm_start3" internal="DOC_PWM.start3" />
+ <interface name="doc_pwm_start2" internal="DOC_PWM.start2" />
+ <interface name="doc_pwm_start1" internal="DOC_PWM.start1" />
+ <interface
+   name="doc_sm_avs"
+   internal="DOC_SM.avalon_slave_0"
+   type="avalon"
+   dir="end" />
+ <interface name="doc_adc_pow" internal="DOC_ADC_POW.conduit_end" />
+ <interface
+   name="doc_adc_pow_avs"
+   internal="DOC_ADC_POW.avalon_slave"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="doc_adc_pow_irq"
+   internal="DOC_ADC_POW.irq"
+   type="interrupt"
+   dir="end" />
+ <interface name="doc_pwm_start_out" internal="DOC_PWM.start_out" />
+ <interface name="doc_pwm_start_in" internal="DOC_PWM.start_in" />
+ <interface
+   name="doc_pwm_sync_out"
+   internal="DOC_PWM.sync_out"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="doc_pwm_sync_in"
+   internal="DOC_PWM.sync_in"
+   type="conduit"
+   dir="end" />
+ <interface name="adc_pow" internal="DOC_ADC_POW.adc" type="conduit" dir="end" />
+ <interface name="adc" internal="DOC_ADC.adc" type="conduit" dir="end" />
+ <interface name="pwm" internal="DOC_PWM.pwm" type="conduit" dir="end" />
+ <interface name="sm" internal="DOC_SM.monitor" type="conduit" dir="end" />
+ <interface name="doc_biss_avs" internal="DOC_Biss.s1" type="avalon" dir="end" />
+ <interface name="doc_biss" internal="DOC_Biss.external" type="conduit" dir="end" />
+ <interface
+   name="doc_biss_irq"
+   internal="DOC_Biss.irq0"
+   type="interrupt"
+   dir="end" />
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_adc">
+  <parameter name="clockFrequency" value="20000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="ssg_emb_sd_adc" version="1.4" enabled="1" name="DOC_ADC">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_ADC_CLOCK_RATE" value="20000000" />
+ </module>
+ <module kind="ssg_emb_pwm" version="1.2" enabled="1" name="DOC_PWM">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+ </module>
+ <module kind="ssg_emb_dsm" version="1.2" enabled="1" name="DOC_SM">
+  <parameter name="init" value="0" />
+  <parameter name="prech" value="1" />
+  <parameter name="prer" value="2" />
+  <parameter name="run" value="3" />
+  <parameter name="error" value="4" />
+  <parameter name="pwm_disable" value="0" />
+  <parameter name="pwm_enable" value="1" />
+  <parameter name="pwm_lower" value="3" />
+  <parameter name="pwm_both" value="7" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+ </module>
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_periph">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="ssg_emb_sd_adc" version="1.4" enabled="1" name="DOC_ADC_POW">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_ADC_CLOCK_RATE" value="20000000" />
+ </module>
+ <module
+   kind="conduit_splitter"
+   version="14.0"
+   enabled="1"
+   name="conduit_splitter_0">
+  <parameter name="OUTPUT_NUM" value="2" />
+ </module>
+ <module kind="mb119y" version="1.0" enabled="1" name="DOC_Biss">
+  <parameter name="Slaves" value="1" />
+  <parameter name="NumRegs" value="8" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+ </module>
+ <connection
+   kind="conduit"
+   version="14.0"
+   start="DOC_PWM.pwm_control"
+   end="DOC_SM.pwm_control">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_periph.clk_reset"
+   end="DOC_SM.reset" />
+ <connection kind="clock" version="14.0" start="clk_periph.clk" end="DOC_SM.clock" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_periph.clk_reset"
+   end="DOC_PWM.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_periph.clk"
+   end="DOC_PWM.clock" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_periph.clk"
+   end="DOC_ADC.clock" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_periph.clk_reset"
+   end="DOC_ADC.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_adc.clk"
+   end="DOC_ADC.clock_adc" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_periph.clk"
+   end="DOC_ADC_POW.clock" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_periph.clk_reset"
+   end="DOC_ADC_POW.reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_adc.clk"
+   end="DOC_ADC_POW.clock_adc" />
+ <connection
+   kind="conduit"
+   version="14.0"
+   start="conduit_splitter_0.conduit_input"
+   end="DOC_PWM.start_adc">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="14.0"
+   start="conduit_splitter_0.conduit_output_0"
+   end="DOC_ADC.start">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="14.0"
+   start="conduit_splitter_0.conduit_output_1"
+   end="DOC_ADC_POW.start">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection kind="clock" version="14.0" start="clk_periph.clk" end="DOC_Biss.clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_periph.clk_reset"
+   end="DOC_Biss.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
+</system>

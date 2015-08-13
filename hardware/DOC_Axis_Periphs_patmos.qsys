@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element $${FILENAME}
+   {
+   }
+   element FE_Clarke_Park_FixP_0
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element avalon_regs_demo_DSPBA_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element clk_int_50
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element clk_int_80
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element clock_adc_in
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element clock_crossing
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element drive0.doc_adc_avs
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element drive0.doc_adc_pow_avs
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
+   element drive0.doc_biss_avs
+   {
+      datum baseAddress
+      {
+         value = "256";
+         type = "String";
+      }
+   }
+   element drive0.doc_pwm_avs
+   {
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
+   element drive0.doc_sm_avs
+   {
+      datum baseAddress
+      {
+         value = "192";
+         type = "String";
+      }
+   }
+   element drive0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element falconeye_example4_FE_Clarke_Park_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element clock_crossing.s0
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "33554432";
+         type = "long";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="EP4CE115F29C7" />
+ <parameter name="deviceFamily" value="Cyclone IV E" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VHDL" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName" value="patmos.qpf" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="IO_OUT_Seven_Segment_external_connection"
+   internal=".external_connection" />
+ <interface name="clk_0" internal="drive0.clk" />
+ <interface name="drive0_endat" internal="drive0.doc_endat" />
+ <interface name="drive0_adc" internal="drive0.adc" type="conduit" dir="end" />
+ <interface name="drive0_pwm" internal="drive0.pwm" type="conduit" dir="end" />
+ <interface name="drive0_sm" internal="drive0.sm" type="conduit" dir="end" />
+ <interface
+   name="drive0_adc_pow"
+   internal="drive0.adc_pow"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="clk_adc_in"
+   internal="clock_adc_in.in_clk"
+   type="clock"
+   dir="end" />
+ <interface
+   name="drive0_biss"
+   internal="drive0.doc_biss"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="drive0_doc_pwm_sync_out"
+   internal="drive0.doc_pwm_sync_out"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="drive0_doc_pwm_sync_in"
+   internal="drive0.doc_pwm_sync_in"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="drive0_doc_adc_irq"
+   internal="drive0.doc_adc_irq"
+   type="interrupt"
+   dir="end" />
+ <interface
+   name="drive0_doc_adc_pow_irq"
+   internal="drive0.doc_adc_pow_irq"
+   type="interrupt"
+   dir="end" />
+ <interface
+   name="avs_periph_slave"
+   internal="clock_crossing.s0"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="reset"
+   internal="clk_int_50.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <interface name="clk_50" internal="clk_int_50.clk_in" type="clock" dir="end" />
+ <interface name="clk_80" internal="clk_int_80.clk_in" type="clock" dir="end" />
+ <interface
+   name="reset_80"
+   internal="clk_int_80.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <module
+   kind="altera_avalon_mm_clock_crossing_bridge"
+   version="14.0"
+   enabled="1"
+   name="clock_crossing">
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="ADDRESS_WIDTH" value="12" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="9" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="0" />
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="COMMAND_FIFO_DEPTH" value="2" />
+  <parameter name="RESPONSE_FIFO_DEPTH" value="2" />
+  <parameter name="MASTER_SYNC_DEPTH" value="3" />
+  <parameter name="SLAVE_SYNC_DEPTH" value="3" />
+  <parameter name="AUTO_M0_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_S0_CLK_CLOCK_RATE" value="80000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+ </module>
+ <module kind="DOC_Axis_Periphs" version="1.0" enabled="1" name="drive0">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="$${FILENAME}_drive0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_CLK_ADC_CLOCK_RATE" value="20" />
+  <parameter name="AUTO_CLK_ADC_CLOCK_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_ADC_RESET_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_PERIPH_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_PERIPH_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_PERIPH_RESET_DOMAIN" value="1" />
+ </module>
+ <module
+   kind="altera_clock_bridge"
+   version="14.0"
+   enabled="1"
+   name="clock_adc_in">
+  <parameter name="DERIVED_CLOCK_RATE" value="0" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="20" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_int_50">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="clock_source" version="14.0" enabled="1" name="clk_int_80">
+  <parameter name="clockFrequency" value="80000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="drive0.doc_pwm_avs">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="drive0.doc_sm_avs">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="drive0.doc_adc_avs">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="drive0.doc_adc_pow_avs">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clock_adc_in.out_clk"
+   end="drive0.clk_adc" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_80.clk"
+   end="clock_crossing.s0_clk" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_80.clk_reset"
+   end="clock_crossing.s0_reset" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="clock_crossing.m0_reset" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="clock_crossing.m0_clk" />
+ <connection
+   kind="clock"
+   version="14.0"
+   start="clk_int_50.clk"
+   end="drive0.clk_periph" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="drive0.reset_periph" />
+ <connection
+   kind="reset"
+   version="14.0"
+   start="clk_int_50.clk_reset"
+   end="drive0.reset" />
+ <connection
+   kind="avalon"
+   version="14.0"
+   start="clock_crossing.m0"
+   end="drive0.doc_biss_avs">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="0" />
+</system>
