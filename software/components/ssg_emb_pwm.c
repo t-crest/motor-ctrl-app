@@ -64,8 +64,11 @@ void pwm_setup(int base_address, int pwmmax)
     //---------------------------------------------------------------------------------------------------------------------
     IOWR_16DIRECT(base_address, PWM_MAX          , pwmmax     );
     IOWR_16DIRECT(base_address, PWM_BLOCK        , 100        );
-    IOWR_16DIRECT(base_address, PWM_TRIGGER_UP   , pwmmax-480 );//was 120
-    IOWR_16DIRECT(base_address, PWM_TRIGGER_DOWN , 480        );//was 120
+    //IOWR_16DIRECT(base_address, PWM_TRIGGER_UP   , pwmmax-480 );//was 120
+    //IOWR_16DIRECT(base_address, PWM_TRIGGER_DOWN , 480        );//was 120
+
+    IOWR_16DIRECT(base_address, PWM_TRIGGER_UP   , pwmmax-720 );//was 120
+    IOWR_16DIRECT(base_address, PWM_TRIGGER_DOWN , 720        );//was 120
 }
 
 void pwm_update(int base_address, int Vu_PWM, int Vv_PWM, int Vw_PWM)

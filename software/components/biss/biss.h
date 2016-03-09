@@ -58,7 +58,7 @@
 
 int Biss_Init(drive_params * dp);
 void Biss_Read_Sensor(drive_params * dp);
-void Biss_Read_Position(drive_params * dp);
+void Biss_Read_Position(drive_params * dp) __attribute__((section(".text.spm")));
 void Biss_Service(drive_params * dp);
 
 /*!

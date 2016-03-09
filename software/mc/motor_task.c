@@ -47,7 +47,7 @@ static const powerboard_t supported_powerboards [] = {{SYSID_PB_ALT12_MULTIAXIS,
 /**
  * Initialise the supported encoder types for this demo
  */
-//static const encoder_t supported_encoders [] = {{SYSID_ENCODER_BISS,  "BiSS",  Biss_Init,  Biss_Service,  Biss_Read_Position }};	//km
+static const encoder_t supported_encoders [] = {{SYSID_ENCODER_BISS,  "BiSS",  Biss_Init,  Biss_Service,  Biss_Read_Position }};	//km
 /*
  * Determine what hardware we are running on based on the FPGA SYSID component.
  */
@@ -113,12 +113,12 @@ int decode_sysid(unsigned int sysid_base_addr) {		//km
 	// Decode the encoder type
 //km 	platform.encoder = NULL;
 //km 	for (i = 0; i < sizeof(supported_encoders)/sizeof(encoder_t); i++) {
-//		platform.encoder = (encoder_t *)&supported_encoders[0];
+		platform.encoder = (encoder_t *)&supported_encoders[0];
 //km		platform.encoder = (encoder_t *)&supported_encoders[i];
 //km		debug_printf(DBG_ALWAYS, "[DECODE SYSID] Encoder Type No.   : %d\n", i);	//km
 //km 	}
 
-//	debug_printf(DBG_ALWAYS, "[DECODE SYSID] Encoder Type   : %s\n", platform.encoder->name);
+	debug_printf(DBG_ALWAYS, "[DECODE SYSID] Encoder Type   : %s\n", platform.encoder->name);
 
 	debug_printf(DBG_ALWAYS, "[DECODE SYSID] %d axes available\n", platform.powerboard->axes);
 	if ((platform.powerboard->first_axis <= (platform.powerboard->axes - 1))
@@ -171,9 +171,9 @@ int decode_sysid(unsigned int sysid_base_addr) {		//km
 //
 // On Nios the ISR is linked in tightly coupled memory
 //
-void drive_irq(void)  __attribute__((naked)); // TODO: IRQ_SECTION; __attribute__((naked)) __attribute__((section(".text.spm")))
+void drive_irq(void)  __attribute__((naked)) __attribute__((section(".text.spm"))); // TODO: IRQ_SECTION; __attribute__((naked)) __attribute__((section(".text.spm")))
+void drive_irq_nn(void) __attribute__((noinline)) __attribute__((section(".text.spm")));
 
-#define SPEED_SHIFT_INT 0
 //#define LOOPBACK
 #define OFFSET_ACCUM_ISR_COUNT  256
 #define CURRENT_OFFSET_LIMIT    400
@@ -189,6 +189,18 @@ static short dc_link_current = 0 ;
 static int runtime =   0 ;
 static int cnt_IRQ =   0 ;
 unsigned int irq_counter = 0;
+
+
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+static int biss_errors = 0;
+static int biss_prev_errors = 0;
+static int biss_readings = 0;
+static int max_error = 0;
+static unsigned long long prev_irq_time = 0;
+static int max_irq_time = 0;
+
+
 
 void * get_dp(void) {
 	return (void *)dp;
@@ -233,6 +245,9 @@ static void inline adc_offset_accumulate(int * start, int * Offset_U, int * Offs
  */
 static void position_control( pi_instance_q15 * Position_PI, int enc_data,  int * enc_data_old,
 									 int * pos_temp,  int * pos_int, int pos_setpoint, int pos_limit,
+									 int * speed_command, int encoder_singleturn_bits) __attribute__((section(".text.spm")));
+static void position_control( pi_instance_q15 * Position_PI, int enc_data,  int * enc_data_old,
+									 int * pos_temp,  int * pos_int, int pos_setpoint, int pos_limit,
 									 int * speed_command, int encoder_singleturn_bits){
     int  delta_phi  ;
     int  shifted_enc_data = enc_data << (23-encoder_singleturn_bits);
@@ -260,6 +275,7 @@ static void position_control( pi_instance_q15 * Position_PI, int enc_data,  int 
  *
  * @param dp	Pointer to axis data structure
  */
+static void sample_inputs(drive_params * dp, int dn) __attribute__((section(".text.spm")));
 static void sample_inputs(drive_params * dp, int dn) {
 	// Read motor position from encoder
 	platform.encoder->encoder_read_position_fn(dp);
@@ -268,13 +284,17 @@ static void sample_inputs(drive_params * dp, int dn) {
 	if (dp->enable_position_control) {
 
 		dp->pos_setpoint_adjusted = dp->pos_setpoint;
-		position_control(&dp->Position_PI,  dp->enc_data, &dp->enc_data_old, &dp->pos_temp, &dp->pos_int, dp->pos_setpoint, dp->pos_limit, &dp->speed_command,dp->encoder_singleturn_bits);
+		position_control(&dp->Position_PI,  dp->enc_data, &dp->enc_data_old,
+						&dp->pos_temp, &dp->pos_int, dp->pos_setpoint,
+						dp->pos_limit, &dp->speed_command,dp->encoder_singleturn_bits);
 
 		dp->speed_command_adjusted = dp->speed_command + ((dp->speed_encoder * dp->pos_spdff_Kp)/256);
 	} else {
 
 		//position control NOT used but still calculates position values
-		position_control(&dp->Position_PI,  dp->enc_data, &dp->enc_data_old, &dp->pos_temp, &dp->pos_int, dp->pos_setpoint_adjusted, dp->pos_limit, &dp->speed_command_adjusted,dp->encoder_singleturn_bits);
+		position_control(&dp->Position_PI,  dp->enc_data, &dp->enc_data_old,
+						&dp->pos_temp, &dp->pos_int, dp->pos_setpoint_adjusted,
+						dp->pos_limit, &dp->speed_command_adjusted,dp->encoder_singleturn_bits);
 		//Set setpoint to actual measured position (not used but makes system console plot look better)
 		dp->pos_setpoint_adjusted = dp->pos_int;
 		dp->speed_command_adjusted = ABS_MAX(dp->speed_command, 3000 << SPEED_FRAC_BITS);
@@ -282,9 +302,12 @@ static void sample_inputs(drive_params * dp, int dn) {
 	// Speed Control
 	//dp->Speed_PI.feedback = ABS_MAX(dp->speed_encoder + dp->cmd_wave_test,3000);
 	dp->Speed_PI.feedback = dp->speed_encoder;
+	//dp->Speed_PI.feedback = dp->speed_encoder>>10;
 	dp->Speed_PI.setpoint = dp->speed_command_adjusted;
+	
 	PI_control_q15(& dp->Speed_PI, dp->reset_control);  //Direct current control
 	dp->i_command_q =  dp->Speed_PI.output;
+
 
 	if ( dp->enable_drive == 0 ){
 		dp->i_command_q = 0 ;
@@ -303,6 +326,7 @@ static void sample_inputs(drive_params * dp, int dn) {
  *
  * @param dp	Pointer to axis data structure
  */
+static void process(drive_params * dp) __attribute__((section(".text.spm")));
 static void process(drive_params * dp) {
 	int dn = 0;
 
@@ -316,9 +340,11 @@ static void process(drive_params * dp) {
 			park_transformation_q10(dp[dn].Ialpha, dp[dn].Ibeta, &dp[dn].Id, &dp[dn].Iq, dp[dn].sin_phi_q15, dp[dn].cos_phi_q15) ;
 			dp[dn].Id_PI.feedback = dp[dn].Id;
 			dp[dn].Id_PI.setpoint = dp[dn].i_command_d;
+			//Flux PI control
 			PI_control_q15(&dp[dn].Id_PI, ((dp[dn].enable_drive == 0)|(dp[dn].reset_control == 1)) );  //Direct current control
 			dp[dn].Iq_PI.feedback = dp[dn].Iq;
 			dp[dn].Iq_PI.setpoint = dp[dn].i_command_q;
+			// Torque PI control
 			PI_control_q15(&dp[dn].Iq_PI,((dp[dn].enable_drive == 0)|(dp[dn].reset_control == 1)) );  //Quadrature current control
 			dp[dn].Vd = dp[dn].Id_PI.output;
 			dp[dn].Vq = dp[dn].Iq_PI.output;
@@ -361,7 +387,13 @@ static void process(drive_params * dp) {
 		svm(PWMMAX, dp[dn].Valpha, dp[dn].Vbeta, & dp[dn].Vu_PWM, & dp[dn].Vv_PWM, & dp[dn].Vw_PWM);
 		// Write new PWM values to hardware ready for next cycle
 		if ( dp[dn].enable_drive == 1 ){
+			//pwm_update(dp[dn].DOC_PWM_BASE_ADDR, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1);
+			//printf("%x, %x, %x\n", dp[dn].Vu_PWM, dp[dn].Vv_PWM, dp[dn].Vw_PWM);
+			//printf("%x\t%x\n", dp[dn].Speed_PI.feedback,dp[dn].i_command_q);
 			pwm_update(dp[dn].DOC_PWM_BASE_ADDR, dp[dn].Vu_PWM, dp[dn].Vv_PWM, dp[dn].Vw_PWM);
+			//volatile int aaa = dp[dn].Vu_PWM;
+			//volatile int bbb = dp[dn].Vv_PWM;
+			//volatile int ccc = dp[dn].Vw_PWM;
 		} else {
 			// Disabled axes set stationary by setting PWM to midpoint
 			pwm_update(dp[dn].DOC_PWM_BASE_ADDR, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1);
@@ -399,7 +431,46 @@ void drive_irq(void) {
 
 	// Disable channel 0 ADC IRQ
     IOWR_16DIRECT(dp[0].DOC_ADC_BASE_ADDR, ADC_IRQ_ACK,1);
-/*
+
+    unsigned long long irq_time = get_cpu_usecs();
+
+    drive_irq_nn();
+
+	dn = 0;
+	dn = axis_select;
+
+
+	// Dump diagnostic data for system console GUI
+//	dump_data(dp, axis_select);
+
+
+
+	// Time critical processing is complete. Set semaphore to wake drive task
+
+
+    // Count up seconds - 16kHz IRQ rate
+    cnt_IRQ++;
+    if(cnt_IRQ == 16000){
+    //if(cnt_IRQ == 8000){
+        cnt_IRQ = 0;
+        runtime++;
+	}
+
+	if (prev_irq_time != 0) {
+		max_irq_time = MAX(irq_time - prev_irq_time,max_irq_time);
+	}
+	prev_irq_time = irq_time;
+
+    // Re-enable channel 0 ADC interrupt
+    IOWR_16DIRECT(dp[0].DOC_ADC_BASE_ADDR, ADC_IRQ_ACK,0);
+
+    exc_epilogue();
+}
+
+void drive_irq_nn() {
+	int dn = 0;
+
+
 	if (dp[dn].openloop_test == 0) {
 		// Closed loop control
 		for (dn = platform.first_drive; dn <= platform.last_drive; dn++){
@@ -485,7 +556,6 @@ void drive_irq(void) {
 	}
 	else {
 
-		*/
 		// Open loop mode
 		static unsigned int idx = 0;
 		unsigned short x1 ;
@@ -493,12 +563,21 @@ void drive_irq(void) {
 		idx = idx+150;
 		x1  = idx>>2;
 
+		static int inc = 0;
+		static unsigned int enc_data_old = 0;
+
         for (dn = platform.first_drive; dn <= platform.last_drive; dn++){
 			// Read motor position from encoder
-    //RBS 	platform.encoder->encoder_read_position_fn(&dp[dn]);
-    //RBS   dp[dn].phi_elec = PHI_ELECTRICAL(dp[dn].mpoles, dp[dn].phi_mech, dp[dn].mphase);
-    //RBS   position_control(&dp[dn].Position_PI,  dp[dn].enc_data, &dp[dn].enc_data_old, &dp[dn].pos_temp, &dp[dn].pos_int, dp[dn].pos_setpoint, dp[dn].pos_limit, &dp[dn].speed_command,dp[dn].encoder_singleturn_bits);
+    	 	platform.encoder->encoder_read_position_fn(&dp[dn]);
+    		dp[dn].phi_elec = PHI_ELECTRICAL(dp[dn].mpoles, dp[dn].phi_mech, dp[dn].mphase);
+    		position_control(&dp[dn].Position_PI,  dp[dn].enc_data, &dp[dn].enc_data_old, &dp[dn].pos_temp,
+    						&dp[dn].pos_int, dp[dn].pos_setpoint, dp[dn].pos_limit, &dp[dn].speed_command,dp[dn].encoder_singleturn_bits);
             // Position not used - for monitoring only
+
+    		int incr1 = (dp->enc_data - (int)enc_data_old + 0x7ffff) & 0x7ffff;
+    		int incr2 = ((int)enc_data_old - dp->enc_data + 0x7ffff) & 0x7ffff;
+    		int diff = MIN(incr1,incr2);
+    		
 
 			// Read motor U & W phase currents from ADC
             adc_read(dp[dn].DOC_ADC_BASE_ADDR, &dp[dn].Iu, &dp[dn].Iw) ;
@@ -513,35 +592,29 @@ void drive_irq(void) {
 			// Write new PWM values to hardware ready for next cycle
             if (dp[dn].enable_drive == 1){
 				pwm_update(dp[dn].DOC_PWM_BASE_ADDR, dp[dn].Vu_PWM, dp[dn].Vv_PWM, dp[dn].Vw_PWM);
+
+				int error = (abs(inc - diff));
+				if (error > 10 ) {
+					// The new diff differs more than error from inc
+					biss_errors++;
+					if (error > max_error) {
+						max_error = error;
+					}
+				}
+				biss_readings++;
+
 			} else {
 				// Disabled axes set stationary by setting PWM to midpoint
 				pwm_update(dp[dn].DOC_PWM_BASE_ADDR, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1, (PWMMAX+1)/2-1);
 			}
+
+			
+			inc = diff;
+			enc_data_old = dp->enc_data;
+
 		} // end for dn
-//	}; // end of openloop mode code
-
-	dn = 0;
-	dn = axis_select;
-
-
-	// Dump diagnostic data for system console GUI
-//	dump_data(dp, axis_select);
-
-
-
-	// Time critical processing is complete. Set semaphore to wake drive task
-
-
-    // Count up seconds - 16kHz IRQ rate
-    cnt_IRQ++;
-    if(cnt_IRQ == 16000){
-        cnt_IRQ = 0;
-        runtime++;
-    }
-    // Re-enable channel 0 ADC interrupt
-    IOWR_16DIRECT(dp[0].DOC_ADC_BASE_ADDR, ADC_IRQ_ACK,0);
-
-    exc_epilogue();
+	}; // end of openloop mode code
+	return;
 }
 
 //################################################################################################
@@ -637,7 +710,7 @@ int adc_offset_calculation(void) {
 		//Wait for offset calculation to finish
 		debug_printf(DBG_INFO, "---> Axis %d: Offset calc\n", dn);
 		while (dp[dn].Offset_start_calc != 0) {
-			debug_printf(DBG_INFO,"---> Offset U %i , Offset W %i\n",dp[dn].Offset_U,dp[dn].Offset_W);
+			//debug_printf(DBG_INFO,"---> Offset U %i , Offset W %i\n",dp[dn].Offset_U,dp[dn].Offset_W);
 			OSTimeDlyHMSM(0, 0, 0, 100);
 			timeout++;
 			if (timeout > 10) {
@@ -646,7 +719,7 @@ int adc_offset_calculation(void) {
 				break;
 			}
 		}
-
+		debug_printf(DBG_INFO,"---> Offset U %i , Offset W %i\n",dp[dn].Offset_U,dp[dn].Offset_W);
 
 		if (this_error == 1) {
 			debug_printf(DBG_ERROR, "---> --------------------------------------------------\n");
@@ -669,8 +742,8 @@ int adc_offset_calculation(void) {
 		} else {
 			dp[dn].Offset_U = dp[dn].Offset_U / OFFSET_ACCUM_ISR_COUNT;
 			dp[dn].Offset_W = dp[dn].Offset_W / OFFSET_ACCUM_ISR_COUNT;
-			debug_printf(DBG_INFO, "---> Offset U: %i \n", (short) dp[dn].Offset_U);
-			debug_printf(DBG_INFO, "---> Offset W: %i \n", (short) dp[dn].Offset_W);
+			debug_printf(DBG_INFO, "---> Offset U: %i \n", dp[dn].Offset_U);
+			debug_printf(DBG_INFO, "---> Offset W: %i \n", dp[dn].Offset_W);
 
 			if ((abs(dp[dn].Offset_U) > CURRENT_OFFSET_LIMIT) || (abs(
 					dp[dn].Offset_W) > CURRENT_OFFSET_LIMIT)) {
@@ -851,7 +924,8 @@ static void	restart_all_drives(void) {
 	   dsm_reset(dp[dn].DOC_SM_BASE_ADDR);
 	   dp[dn].enable_drive = 0 ;              // disable
 	   //SPC
-	   dp[dn].speed_command = 100<<SPEED_FRAC_BITS;        // set back to initial speed
+	   //dp[dn].speed_command = 100<<SPEED_FRAC_BITS;        // set back to initial speed
+	   dp[dn].speed_command = 5<<SPEED_FRAC_BITS;        // set back to initial speed
 	   debug_write_status (dn, DOC_DBG_SPEED_SETP0, dp[dn].speed_command>>SPEED_FRAC_BITS);
 	}
 }
@@ -897,6 +971,7 @@ static void	init_axis(int dn) {
 
 	dp[dn].Position_PI.integrator_limit = 0;
 	dp[dn].Position_PI.feedback_limit = 1073741824; //32000; //Max short_int
+	dp[dn].enable_position_control = 0;
 
 	dp[dn].Position_PI.output_limit = dp[dn].pos_limit;
 	PI_reset_q15(&dp[dn].Position_PI);
@@ -1026,10 +1101,9 @@ void motor_task(void* pdata) {
 		//Configure the DC link
 		debug_printf(DBG_INFO, "[Motor task] Configure DC link\n");
 		dc_link_setup();
+		debug_printf(DBG_INFO, "[Motor task] Overvoltage %i\n", IORD_16DIRECT(DOC_DC_LINK_BASE, DOC_DC_LINK_OVERVOLTAGE));
 		OSTimeDlyHMSM(0, 0, 0, 1);
-		unsigned short int tmp = IORD_16DIRECT(DOC_DC_LINK_BASE, DOC_DC_LINK_OVERVOLTAGE);
-		debug_printf(DBG_INFO, "[Motor task] Overvoltage %i\n", tmp);
-		debug_printf(DBG_INFO, "[Motor task] Overvoltage %i\n", platform.powerboard->overvoltage);
+		
 
 		//Check the DC link voltage measurement
 		debug_printf(DBG_INFO, "[Motor task] Check DC Link\n");
@@ -1045,7 +1119,7 @@ void motor_task(void* pdata) {
 
 		dc_link_chopper_setup();
 
-/*
+
 		// Initialise Encoders
 		debug_printf(DBG_INFO, "[Motor task] %s Initialization\n", platform.encoder->name);
 		for (dn = platform.first_drive; dn <= platform.last_drive; dn++){//MAX
@@ -1069,35 +1143,29 @@ void motor_task(void* pdata) {
 			if (dp[dn].encoder_version > 0)
 				debug_printf(DBG_INFO, "[Motor task] Version of %s interface  V%i.2 \n", platform.encoder->name, dp[dn].encoder_version);
 		};
-*/
+
 		debug_printf(DBG_INFO, "[Motor task] ---> Setting state to 7 \n");
 		debug_write_status (0, DOC_DBG_DRIVE_STATE, 7); //passed EnDat test
 
 		// Enable drive IRQ in CPU interrupt controller
-		// TODO: setup drive_irq() as interrupt handler on patmos
-		//alt_ic_isr_register(0, DRIVE0_DOC_ADC_IRQ, drive_irq, NULL, NULL);
-		//exc_register(6,&drive_irq);
 		exc_register(16+6,&drive_irq);
 
 		// unmask interrupts
 		intr_unmask_all();
-		
+		// enable interrupts
+		intr_enable();
 
 		debug_printf(DBG_INFO, "[Motor task] ---> Interrupt service routine setup \n");
 
 		//Enable the PWMs after setting up the EnDat / Biss encoders
 		for (dn = 0; dn <= platform.last_drive; dn++) {
 			dsm_reset(dp[dn].DOC_SM_BASE_ADDR);
-			debug_printf(DBG_INFO, "[Motor task] ---> DSM setup \n");
 			pwm_setup(dp[dn].DOC_PWM_BASE_ADDR,PWMMAX);
-			debug_printf(DBG_INFO, "[Motor task] ---> PWM setup \n");
 			adc_setup(dp[dn].DOC_ADC_BASE_ADDR);
-			debug_printf(DBG_INFO, "[Motor task] ---> ADC setup \n");
 		}
-		debug_printf(DBG_INFO, "[Motor task] ---> IO devices setup \n");
 
-		// enable interrupts
-		intr_enable();
+		OSTimeDlyHMSM(0, 0, 0, 100);
+		
 
 		if (adc_offset_calculation()>0) {
 			restart_drive = 1;  //loop restarting the drive if error
@@ -1111,7 +1179,7 @@ void motor_task(void* pdata) {
 		while(restart_drive == 0) {
 			// Service all drives
 			// Leave this as 0 to platform.last_drive for debug interface
-			for (dn = 0; dn <= platform.last_drive; dn++){ //MAX
+			for (dn = platform.first_drive; dn <= platform.last_drive; dn++){ //MAX
 				update_axis(dn);
 			}
 
@@ -1119,16 +1187,16 @@ void motor_task(void* pdata) {
 		    axis_select = 0;
 
 			// Debug Output of Motor Data once per second only in Run State
-			if (dp[platform.first_drive].state_act == 3 ) {
-				if (runtime != last_runtime) {
-					last_runtime = runtime;
+			//if (dp[platform.first_drive].state_act == 3 ) {
+			//	if (runtime != last_runtime) {
+			//		last_runtime = runtime;
 					//PERF_STOP_MEASURING (PERFORMANCE_COUNTER_0_BASE);
 					//latency = small2_perf_get_latency  ((void *)PERFORMANCE_COUNTER_0_BASE, 2, AVALON_FREQ); //The FOC portion of the IRQ for 1 axis
 					//latency = small2_perf_get_latency  ((void *)PERFORMANCE_COUNTER_0_BASE, 1, AVALON_FREQ); //The complete IRQ
 					//PERF_RESET (PERFORMANCE_COUNTER_0_BASE);
 					//PERF_START_MEASURING (PERFORMANCE_COUNTER_0_BASE);
-				}
-			}
+			//	}
+			//}
 
 			// Drive state machine
 			for (dn = platform.first_drive; dn <= platform.last_drive; dn++){ //MAX
@@ -1149,40 +1217,60 @@ void motor_task(void* pdata) {
 						runtime =0 ;
 						cnt_IRQ =0 ;
 						adc_overcurrent_enable(dp[dn].DOC_ADC_BASE_ADDR,0);     // overcurrent measurement disabled
-						OSTimeDlyHMSM(0, 0, 0, 250);
+						OSTimeDlyHMSM(0, 0, 0, 500);
 						IOWR_16DIRECT(dp[dn].DOC_SM_BASE_ADDR, SM_CONTROL , 1) ;
 						break;
 						
 					case 1: /***Precharge********/
 						// go straight to state 2
 						debug_write_status (dn, DOC_DBG_DRIVE_STATE, 1);
-						OSTimeDlyHMSM(0, 0, 0, 250);
+						OSTimeDlyHMSM(0, 0, 0, 500);
 						IOWR_16DIRECT(dp[dn].DOC_SM_BASE_ADDR, SM_CONTROL, 2) ;
 						break;
 						
 					case 2: /***Prerun**********/
 						debug_write_status (dn, DOC_DBG_DRIVE_STATE, 2);
-						adc_overcurrent_enable(dp[dn].DOC_ADC_BASE_ADDR,1); // enable overcurrent measure
+						adc_overcurrent_enable(dp[dn].DOC_ADC_BASE_ADDR,0); // enable overcurrent measure
+						//if ((IORD_16DIRECT(dp[dn].DOC_ADC_BASE_ADDR,ADC_D) & 1) != 1) {
+						//	printf("Failure\n");
+						//} else {
+						//	printf("Success\n");
+						//}
 						// go straight to state 3
-						OSTimeDlyHMSM(0, 0, 0, 250);
+						OSTimeDlyHMSM(0, 0, 0, 500);
 						IOWR_16DIRECT(dp[dn].DOC_SM_BASE_ADDR, SM_CONTROL, 3) ;
 						break;
 						
 					case 3: /***Run*************/
 						dp[dn].enable_drive = 1 ;
+						if (biss_prev_errors != biss_errors) {
+							debug_printf(DBG_ALWAYS,
+								"BiSS: %d diffs failed, after %d readings\nBiSS: Max Error %d\nIRQ: Max IRQ time %d\n",
+								biss_errors,biss_readings,max_error,max_irq_time);
+							//debug_printf(DBG_ALWAYS,"BiSS: Max Error %d\n",max_error);
+							//debug_printf(DBG_ALWAYS,"IRQ: Max IRQ time %d\n",max_irq_time);
+							max_error = 0;
+							max_irq_time = 0;
+							biss_prev_errors = biss_errors;
+						}
+						if(cnt_IRQ == 15999){
+					    	debug_printf(DBG_ALWAYS,
+								"Speed command: %d\n",
+								dp[dn].speed_command);
+						}
 						break;
 						
 					case 4:
 						// Error state
 						restart_drive = 1;
 						decode_error_state(dn);
-						OSTimeDlyHMSM(0, 0, 0, 10);
+						OSTimeDlyHMSM(0, 0, 0, 100);
 						break;
 				}
 			}
-			OSTimeDlyHMSM(0, 0, 0, 100);
+			OSTimeDlyHMSM(0, 0, 0, 400);
 
-			restart_drive |= soft_button_scan(buttons);
+			//restart_drive |= soft_button_scan(buttons);
 		}	// while(restart_drive == 0)
 
 		decode_error_state(0);

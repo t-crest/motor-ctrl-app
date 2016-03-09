@@ -95,7 +95,7 @@ typedef struct
  * @param[out] i_alpha_q10 alpha output
  * @param[out] i_beta_q10 beta output
  */
-void clark_transform_q10(short i_u_q10, short i_w_q10, int *i_alpha_q10, int *i_beta_q10);
+void clark_transform_q10(short i_u_q10, short i_w_q10, int *i_alpha_q10, int *i_beta_q10) __attribute__((section(".text.spm")));
 
 /**
  * Park Transformation is a space vector transformation of three-phase time-domain signals from a
@@ -108,7 +108,7 @@ void clark_transform_q10(short i_u_q10, short i_w_q10, int *i_alpha_q10, int *i_
  * @param sinVal_q15 Sine value for angle (w)
  * @param cosVal_q15 Cosine value for angle (w)
  */
-void park_transformation_q10(int Ialpha_q10, int Ibeta_q10, int * Id_q10, int * Iq_q10, int sinVal_q15, int cosVal_q15);
+void park_transformation_q10(int Ialpha_q10, int Ibeta_q10, int * Id_q10, int * Iq_q10, int sinVal_q15, int cosVal_q15) __attribute__((section(".text.spm")));
 
 /**
  * Inverse Park Transformation ( rotor - stator ) 2 axis coordinate system ( d , q )
@@ -121,7 +121,7 @@ void park_transformation_q10(int Ialpha_q10, int Ibeta_q10, int * Id_q10, int * 
  * @param sinVal_q15 Sine value for angle (w)
  * @param cosVal_q15 Cosine value for angle (w)
  */
-void inverse_park_q10(int Vd_q10, int Vq_q10, int * pValpha_q10, int * pVbeta_q10, int sinVal_q15, int cosVal_q15);
+void inverse_park_q10(int Vd_q10, int Vq_q10, int * pValpha_q10, int * pVbeta_q10, int sinVal_q15, int cosVal_q15) __attribute__((section(".text.spm")));
 
 /**
  * PI controller algorithm: Executes one time-step every execution
@@ -130,14 +130,14 @@ void inverse_park_q10(int Vd_q10, int Vq_q10, int * pValpha_q10, int * pVbeta_q1
  * @param S PI controller data structure
  * @param resetStateFlag
  */
-void PI_control_q15(pi_instance_q15 * S, int resetStateFlag);
+void PI_control_q15(pi_instance_q15 * S, int resetStateFlag) __attribute__((section(".text.spm")));
 
 /**
  * PI controller reset
  *
  * @param S PI controller structure to reset
  */
-void PI_reset_q15(pi_instance_q15 * S);
+void PI_reset_q15(pi_instance_q15 * S) __attribute__((section(".text.spm")));
 
 /**
  * Space Vector Modulation - Creates a switching sequence for the 3 voltage phases (UVW) of the motor that
@@ -153,7 +153,7 @@ void PI_reset_q15(pi_instance_q15 * S);
  * @param [out] rv_out PWM switching threshold for V voltage phase
  * @param [out] rw_out PWM switching threshold for W voltage phase
  */
-void svm(int pwm_max, int u_a, int u_b, int * ru_out, int * rv_out, int * rw_out);
+void svm(int pwm_max, int u_a, int u_b, int * ru_out, int * rv_out, int * rw_out) __attribute__((section(".text.spm")));
 
 /*!
  * @}

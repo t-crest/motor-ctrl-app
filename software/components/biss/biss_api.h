@@ -128,8 +128,8 @@
 // Function prototypes
 void Biss_Reset(unsigned int base_addr);
 void Biss_Enc_Reset(unsigned int base_addr);
-void Biss_Write(unsigned int base_addr, unsigned int reg, unsigned int data);
-unsigned int Biss_Read(unsigned int base_addr, unsigned int reg);
+void Biss_Write(unsigned int base_addr, unsigned int reg, unsigned int data) __attribute__((section(".text.spm")));
+unsigned int Biss_Read(unsigned int base_addr, unsigned int reg) __attribute__((section(".text.spm")));
 
 unsigned int Biss_Read_Master_Version(unsigned int base_addr);
 unsigned int Biss_Read_Master_Revision(unsigned int base_addr);

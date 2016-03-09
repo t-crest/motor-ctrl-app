@@ -68,7 +68,7 @@ void adc_setup(int base_address);
 
 void adc_overcurrent_enable(int base_address, int enable);
 
-void adc_read(int base_address, short *Iu, short *Iw);
+void adc_read(int base_address, short *Iu, short *Iw) __attribute__((section(".text.spm")));
 
 #define adc_read_u(base_address) ((short)IORD_16DIRECT(base_address,ADC_I_U))
 #define adc_read_w(base_address) ((short)IORD_16DIRECT(base_address,ADC_I_W))

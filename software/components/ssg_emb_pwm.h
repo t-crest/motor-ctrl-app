@@ -64,7 +64,7 @@
 
 void pwm_setup(int base_address, int pwmmax);
 
-void pwm_update(int base_address, int Vu_PWM, int Vv_PWM, int Vw_PWM);
+void pwm_update(int base_address, int Vu_PWM, int Vv_PWM, int Vw_PWM) __attribute__((section(".text.spm")));
 
 /*!
  * @}

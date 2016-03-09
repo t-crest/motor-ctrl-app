@@ -263,7 +263,7 @@ void Biss_Service(drive_params * dp) {
     }
 
         debug_printf(DBG_INFO, "---> ------------------------------------\n");
-        debug_printf(DBG_INFO, "---> <Conrol value of phi>\n");
+        debug_printf(DBG_INFO, "---> <Control value of phi>\n");
         debug_printf(DBG_INFO, "---> Phi Mech            : 0x%X 0d%d\n",id_phase,id_phase);
         debug_printf(DBG_INFO, "---> Phi Elec (4 poles)  : 0x%X 0d%d\n",id_phase*4, id_phase*4);
         debug_printf(DBG_INFO, "---> Phi Elec with 16 Bit: 0x%X 0d%d\n",(id_phase*4) & 0xFFFF, (id_phase*4) & 0xFFFF);

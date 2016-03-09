@@ -98,7 +98,7 @@
  *
  * @{
  */
-#define OPEN_LOOP_INIT 1
+#define OPEN_LOOP_INIT 0
 /*!
  * @}
  */
@@ -149,7 +149,10 @@
 // Default debug output level
 #define DBG_DEFAULT DBG_INFO
 
+// Changing the switching frequency to allow patmos to spend more time
 #define PWMMAX       3125                   //!< 50 MHz -> 8 kHz IGBT switching frequency
+//#define PWMMAX       6250                   //!< 50 MHz -> 4 kHz IGBT switching frequency
+//#define PWMMAX       12500                   //!< 50 MHz -> 2 kHz IGBT switching frequency
 
 #define word                    0xFFFF
 #define dword                   0xFFFFFFFF
@@ -183,7 +186,7 @@ typedef struct
 	short I_sat_limit;				//!<Current saturation limit
 	short V_sat_limit;				//!<Voltage saturation limit
 
-	int     Id;						//!<Id - Direct Current
+	volatile int     Id;						//!<Id - Direct Current
 	int     Iq;						//!<Iq - Quadrature Current
 
 	short   Iq_Kp;					//!<Iq proportional gain constant
@@ -215,15 +218,15 @@ typedef struct
 
 	char    mpoles;    				//!<Set motor pole pairs
 	short   mphase;					//!<Phase offset
-	int     i_command_d;			//!<Direct Current Command
-	int     i_command_q;			//!<Quadrature Current Command
+	volatile int     i_command_d;			//!<Direct Current Command
+	volatile int     i_command_q;			//!<Quadrature Current Command
 
 	//Define PI controller structures
 	pi_instance_q15 Id_PI;      	//!<FOC Direct Current PI controller
 	pi_instance_q15 Iq_PI;      	//!<FOC Quadrature Current PI controller
 	pi_instance_q15 Speed_PI;   	//!<Speed PI controller
 	pi_instance_q15 Position_PI;	//!<Position PI controller
-
+/*
 	//################################################################################################
 	//Variables of Iq and Id Controls (For Floating Point)
 	//################################################################################################
@@ -251,7 +254,7 @@ typedef struct
  	pi_instance_f Iq_PI_f;      	//!<FOC Quadrature Current PI Controller (floating point)
  	pi_instance_f Speed_PI_f;   	//!<Speed PI Controller (floating point)
 	pi_instance_f Position_PI_f;	//!<Position PI Controller (floating point)
-
+*/
 	//################################################################################################
 	//Angle variables
 	//################################################################################################
@@ -265,10 +268,10 @@ typedef struct
 	//################################################################################################
 	//Current offset calculation variables
 	//################################################################################################
-	int     Offset_start_calc;
-	int     Offset_U;
-	int     Offset_W;
-	short   Offset_err;
+	volatile int     Offset_start_calc;
+	volatile int     Offset_U;
+	volatile int     Offset_W;
+	volatile short   Offset_err;
 
 	//################################################################################################
 	//Speed variables
@@ -282,8 +285,8 @@ typedef struct
 	//################################################################################################
 	//Encoder Variables
 	//################################################################################################
-	short   enable_drive;			//!<Enables the PWM output
-	short   enable_position_control;//!<Enables position control
+	volatile short   enable_drive;			//!<Enables the PWM output
+	volatile short   enable_position_control;//!<Enables position control
 
 	//################################################################################################
 	//EnDat variables
@@ -300,8 +303,8 @@ typedef struct
 	int        enc_data_prev;			//!<Encoder single & multi-turn data (previous value)
 	int        enc_turns;				//!<Encoder multi-turn data
 
-	int        position_encoder;		//!<Position value derived from encoder including any multi-turn info
-	int        position_setpoint;		//!<Position setpoint (desired position)
+	volatile int        position_encoder;		//!<Position value derived from encoder including any multi-turn info
+	volatile int        position_setpoint;		//!<Position setpoint (desired position)
 
 	int        sensor_warning_bits;
 	int        sensor_error_bits;
@@ -312,7 +315,7 @@ typedef struct
 	int    speed_Kp;					//!<Kp_speed proportional parameter Speed Control
 	int    speed_Ki;					//!<Ki_speed integral    parameter Speed Control
 	int    speed_limit; 				//!<Speed is limited to this value
-	int    speed_command;				//!<Speed request/command
+	volatile int    speed_command;				//!<Speed request/command
 	int    speed_command_adjusted;		//!<Speed request/command after adjustment
 	int    pos_setpoint;				//!<Position setpoint
 	int    pos_setpoint_adjusted;		//!<Position setpoint after adjustment
@@ -339,9 +342,9 @@ typedef struct
 	unsigned short status_word;
 	unsigned short state_act, state_act_old;
 
-	int openloop_test;
+	volatile int openloop_test;
 
-	int reset_control;							//!<Resets the FOC control algorithm (PI control & Filter)
+	volatile int reset_control;							//!<Resets the FOC control algorithm (PI control & Filter)
 
 } drive_params;
 

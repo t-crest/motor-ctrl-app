@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE EP4CE115F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY patmos_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 11.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:05:10  MARCH 02, 2012"
-set_global_assignment -name LAST_QUARTUS_VERSION 15.0.0
+set_global_assignment -name LAST_QUARTUS_VERSION 14.0
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
 set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
@@ -475,7 +475,7 @@ set_global_assignment -name VHDL_FILE hardware/DOC_Monitor/synthesis/DOC_Monitor
 set_global_assignment -name QIP_FILE hardware/DOC_Monitor/synthesis/DOC_Monitor.qip
 set_global_assignment -name VHDL_FILE hardware/DOC_Axis_Periphs_patmos/synthesis/DOC_Axis_Periphs_patmos.vhd -library DOC_Axis_Periphs_patmos
 set_global_assignment -name QIP_FILE hardware/DOC_Axis_Periphs_patmos/synthesis/DOC_Axis_Periphs_patmos.qip
-set_global_assignment -name VERILOG_FILE DEFINES_DE2115.v
+#set_global_assignment -name VERILOG_FILE DEFINES_DE2115.v
 set_global_assignment -name SOURCE_FILE db/patmos.cmp.rdb
 
 

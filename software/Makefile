@@ -20,6 +20,10 @@ CFLAGS?=-target patmos-unknown-unknown-elf -O3 \
 LDFLAGS?= \
 	-mpatmos-method-cache-size=0x2000 -mpatmos-preferred-subfunction-size=0 \
 	-mpatmos-stack-base=0x200000 -mpatmos-shadow-stack-base=0x1f8000 -lm
+	#-Xgold -T -Xgold ./spm_ram.t
+	# Command for extracting the size of the ISPM allocated code:
+	# readelf -a main.elf | grep -m 1 ".text.spm" | awk '{print $6}'
+
 
 
 FILES   = $(shell find . \( ! -regex '.*/\..*' \) -type f -name "*.c")
@@ -37,6 +41,9 @@ $(BINARY): Makefile.deps $(OBJS)
  
 Makefile.deps: $(FILES) $(HEADERS)
 	makedepend -- $(CFLAGS) -- $(FILES) -f- > Makefile.deps
+
+config:
+	quartus_pgm -c USB-Blaster -m JTAG ../patmos_time_limited.cdf
 
 download: $(BINARY)
 	patserdow -v /dev/ttyUSB0 $(BINARY)
