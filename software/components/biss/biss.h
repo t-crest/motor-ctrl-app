@@ -56,10 +56,10 @@
 // Application specific BiSS support functions
 //
 
-int Biss_Init(drive_params * dp);
-void Biss_Read_Sensor(drive_params * dp);
-void Biss_Read_Position(drive_params * dp) __attribute__((section(".text.spm")));
-void Biss_Service(drive_params * dp);
+int Biss_Init(_IODEV drive_params * dp);
+void Biss_Read_Sensor(_IODEV drive_params * dp);
+void Biss_Read_Position(_IODEV drive_params * dp) __attribute__((section(".text.spm")));
+void Biss_Service(_IODEV drive_params * dp);
 
 /*!
  * @}

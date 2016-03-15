@@ -11,20 +11,11 @@
 
 #include "includes.h"
 
-// For litle endian
 #define SYSID_VERSION_MAJOR(s) ((s & 0x00F00000)>>20)      //!< DOC hardware Major version from QSYS SYSID
 #define SYSID_VERSION_MINOR(s) ((s & 0x000F0000)>>16)      //!< DOC hardware Minor version from QSYS SYSID
 #define SYSID_POWERBOARD_ID(s) ((s & 0x0000F000)>>12)      //!< DOC power board identifier from QSYS SYSID
 #define SYSID_DEVICE_FAMILY(s) ((s & 0x00000F00)>>8)       //!< DOC device family identifier from QSYS SYSID
 #define SYSID_DESIGN_ID(s)     ((s & 0x000000FF))          //!< DOC identifier from QSYS SYSID
-
-// For big endian
-//#define SYSID_VERSION_MAJOR(s) ((s & 0x0000F000)>>12)      //!< DOC hardware Major version from QSYS SYSID
-//#define SYSID_VERSION_MINOR(s) ((s & 0x00000F00)>>8)      //!< DOC hardware Minor version from QSYS SYSID
-//#define SYSID_POWERBOARD_ID(s) ((s & 0x00F00000)>>20)      //!< DOC power board identifier from QSYS SYSID
-//#define SYSID_DEVICE_FAMILY(s) ((s & 0x000F0000)>>16)       //!< DOC device family identifier from QSYS SYSID
-//#define SYSID_DESIGN_ID(s)     ((s & 0xFF000000)>>24)          //!< DOC identifier from QSYS SYSID
-
 
 #define SYSID_UNKNOWN    -1
 
@@ -63,9 +54,9 @@ typedef struct {
 typedef struct {
 	int    sysid;				//!< Identifier form Qsys SYSID
 	char * name;				//!< Descriptive name
-	int (*encoder_init_fn)(drive_params * dp);				//!< Pointer to encoder initialisation function
-	void (*encoder_service_fn)(drive_params * dp);			//!< Pointer to encoder service function
-	void (*encoder_read_position_fn)(drive_params * dp);	//!< Pointer to encoder position read function
+	int (*encoder_init_fn)(_IODEV drive_params * dp);				//!< Pointer to encoder initialisation function
+	void (*encoder_service_fn)(_IODEV drive_params * dp);			//!< Pointer to encoder service function
+	void (*encoder_read_position_fn)(_IODEV drive_params * dp);	//!< Pointer to encoder position read function
 } encoder_t;
 
 typedef struct {

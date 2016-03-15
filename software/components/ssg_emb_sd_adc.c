@@ -73,7 +73,7 @@ void adc_overcurrent_enable(int base_address, int enable)
     IOWR_16DIRECT(base_address, ADC_D , (enable&1) | IORD_16DIRECT(base_address,ADC_D));
 }
 
-void adc_read(int base_address, short *Iu, short *Iw)
+void adc_read(int base_address, _IODEV short *Iu, _IODEV short *Iw)
 {
     //#############################################################################################
     //Normal operation with speed control

@@ -61,7 +61,8 @@ unsigned int dbg_level = DBG_ALL;
 /*
  * init_debug (re-)initialize drive parameters for one axis
  */
-void init_debug (int dn, drive_params * dp) {
+ /*
+void init_debug (int dn, _IODEV drive_params * dp) {
     debug_write_status (dn, DOC_DBG_DEMO_MODE, 0);
 	debug_write_status (dn, DOC_DBG_OL_EN, dp[dn].openloop_test);//MAX
 
@@ -87,39 +88,7 @@ void init_debug (int dn, drive_params * dp) {
     debug_write_status (dn, DOC_DBG_POS_SPDFF_KP, dp[dn].pos_spdff_Kp);
 
 }
-
-/*
- * poll_debug Put new values passed from system console GUI into drive parameters
- */
-void poll_debug (int dn, drive_params * dp) {
-/*    dp[dn].openloop_test = debug_read_command (dn, DOC_DBG_OL_EN);
-
-    dp[dn].Id_Kp = debug_read_command (dn, DOC_DBG_I_PI_KP);
-    dp[dn].Id_Ki = debug_read_command (dn, DOC_DBG_I_PI_KI);
-
-    dp[dn].I_sat_limit = debug_read_command (dn, DOC_DBG_I_PI_FB_LIM);
-    dp[dn].V_sat_limit = debug_read_command (dn, DOC_DBG_I_PI_OP_LIM);
-
-    dp[dn].speed_Kp = debug_read_command (dn, DOC_DBG_SPEED_PI_KP);
-    dp[dn].speed_Ki = debug_read_command (dn, DOC_DBG_SPEED_PI_KI);
-    dp[dn].speed_limit = debug_read_command (dn, DOC_DBG_SPEED_PI_FB_LIM);
-    dp[dn].speed_command = debug_read_command (dn, DOC_DBG_SPEED_SETP0) << SPEED_FRAC_BITS;
-    //dp[dn].speed_command = debug_read_command (dn, DOC_DBG_SPEED_SETP1); //dummy
-    dp[dn].pos_setpoint = debug_read_command (dn, DOC_DBG_POS_SETP0);
-
-    int temp_pos_mode = debug_read_command (dn, DOC_DBG_POS_MODE);
-    if (temp_pos_mode != dp[dn].enable_position_control) {
-		//Reset the multi-turn position when switching to/from position mode
-    	dp[dn].pos_temp = 0;
-    }
-    dp[dn].enable_position_control = temp_pos_mode;
-    dp[dn].pos_limit = debug_read_command (dn, DOC_DBG_POS_SPEED) << SPEED_FRAC_BITS; //dummy
-    dp[dn].pos_setpoint = debug_read_command (dn, DOC_DBG_POS_SETP0);
-    dp[dn].pos_Kp = debug_read_command (dn, DOC_DBG_POS_PI_KP); //dummy
-    dp[dn].pos_spdff_Kp = debug_read_command (dn, DOC_DBG_POS_SPDFF_KP); //dummy
-
 */
-}
 
 /**
  * \addtogroup DEBUG_BUTTON
@@ -156,7 +125,7 @@ int debug_button_pressed(int buttons, int button_num)
 /*
  * Dump selected data to system console Tcl GUI
  */
-void dump_data(drive_params * dp, int axis_select) {
+void dump_data(_IODEV drive_params * dp, int axis_select) {
 /*
     int dn = 0;
 

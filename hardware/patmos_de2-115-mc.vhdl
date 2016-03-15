@@ -87,6 +87,8 @@ architecture rtl of patmos_top is
 			io_comConf_S_Resp       : in std_logic_vector(1 downto 0);
 			io_comConf_S_Data       : in std_logic_vector(31 downto 0);
 			io_comConf_S_CmdAccept  : in std_logic;
+			io_comConf_S_Reset_n	: in std_logic;
+			io_comConf_S_Flag		: in std_logic_vector(1 downto 0);
 
 			io_comSpm_M_Cmd         : out std_logic_vector(2 downto 0);
 			io_comSpm_M_Addr        : out std_logic_vector(31 downto 0);
@@ -377,18 +379,51 @@ begin
       end if;
     end process;
 
-    comp : Patmos port map(clk_80, reset_80,
-           open, open, open, open, open,
-           (others => '0'), (others => '0'), '0',
-           open, open, open, open,
-           (others => '0'), (others => '0'),
-           X"00000000", X"00000001",
-           open,
-           (others => '0'),
-           oUartPins_txd, iUartPins_rxd,
-			  avs_waitrequest, avs_readdata, avs_readdatavalid, avs_burstcount(0), avs_writedata,
-			  avs_address, avs_write, avs_read, avs_byteenable, avs_debugaccess, avs_intr,
-           oSRAM_A, sram_out_dout_ena, SRAM_DQ, sram_out_dout, oSRAM_CE_N, oSRAM_OE_N, oSRAM_WE_N, oSRAM_LB_N, oSRAM_UB_N);
+    comp : Patmos port map(
+    		clk => clk_80,
+			reset => reset_80,
+			io_comConf_M_Cmd => open,
+			io_comConf_M_Addr => open,
+			io_comConf_M_Data => open,
+			io_comConf_M_ByteEn => open,
+			io_comConf_M_RespAccept => open,
+			io_comConf_S_Resp => (others => '0'),
+			io_comConf_S_Data => (others => '0'),
+			io_comConf_S_CmdAccept => '0',
+			io_comConf_S_Reset_n => '0',
+			io_comConf_S_Flag => (others => '0'),
+			io_comSpm_M_Cmd => open,
+			io_comSpm_M_Addr => open,
+			io_comSpm_M_Data => open,
+			io_comSpm_M_ByteEn => open,
+			io_comSpm_S_Resp => (others => '0'),
+			io_comSpm_S_Data => (others => '0'),
+			io_cpuInfoPins_id => X"00000000",
+			io_cpuInfoPins_cnt => X"00000001",
+			io_ledsPins_led => open,
+			io_keysPins_key => (others => '0'),
+			io_uartPins_tx => oUartPins_txd,
+			io_uartPins_rx => iUartPins_rxd,
+			io_avalonMMBridgePins_avs_waitrequest => avs_waitrequest,
+			io_avalonMMBridgePins_avs_readdata => avs_readdata,
+			io_avalonMMBridgePins_avs_readdatavalid => avs_readdatavalid,
+			io_avalonMMBridgePins_avs_burstcount => avs_burstcount(0),
+			io_avalonMMBridgePins_avs_writedata => avs_writedata,
+			io_avalonMMBridgePins_avs_address => avs_address,
+			io_avalonMMBridgePins_avs_write => avs_write,
+			io_avalonMMBridgePins_avs_read => avs_read,
+			io_avalonMMBridgePins_avs_byteenable => avs_byteenable,
+			io_avalonMMBridgePins_avs_debugaccess => avs_debugaccess,
+			io_avalonMMBridgePins_avs_intr => avs_intr,
+            io_sramCtrlPins_ramOut_addr => oSRAM_A,
+            io_sramCtrlPins_ramOut_doutEna => sram_out_dout_ena,
+            io_sramCtrlPins_ramIn_din => SRAM_DQ,
+            io_sramCtrlPins_ramOut_dout => sram_out_dout,
+            io_sramCtrlPins_ramOut_nce => oSRAM_CE_N,
+            io_sramCtrlPins_ramOut_noe => oSRAM_OE_N,
+            io_sramCtrlPins_ramOut_nwe => oSRAM_WE_N,
+            io_sramCtrlPins_ramOut_nlb => oSRAM_LB_N,
+            io_sramCtrlPins_ramOut_nub => oSRAM_UB_N);
 	 
 	 drive0_igbt_err_in <= not drive0_sm_igbt_err;
 	 drive0_endat_RS485_Data_Enable <= '0';

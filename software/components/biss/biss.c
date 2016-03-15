@@ -60,7 +60,7 @@
 //
 // Application specific initialisation of Biss interface and encoder
 //
-int Biss_Init(drive_params * dp) {
+int Biss_Init(_IODEV drive_params * dp) {
 	unsigned int base_addr = dp->DOC_BISS_BASE_ADDR;
 
 	// Reset the encoder
@@ -83,7 +83,7 @@ int Biss_Init(drive_params * dp) {
 //
 // Read sensor data
 //
-void Biss_Read_Sensor(drive_params * dp) {
+void Biss_Read_Sensor(_IODEV drive_params * dp) {
 	int mphase_tmp;
 	unsigned int base_addr = dp->DOC_BISS_BASE_ADDR;
 
@@ -120,7 +120,7 @@ void Biss_Read_Sensor(drive_params * dp) {
 //
 // Biss position read
 //
-void Biss_Read_Position(drive_params * dp) {
+void Biss_Read_Position(_IODEV drive_params * dp) {
 	int delta_phi;
 	unsigned int positionCDS;
 	unsigned int positionH;
@@ -172,7 +172,7 @@ void Biss_Read_Position(drive_params * dp) {
 //
 // Biss encoder offset calibration
 //
-void Biss_Service(drive_params * dp) {
+void Biss_Service(_IODEV drive_params * dp) {
 
 	unsigned int base_addr = dp->DOC_BISS_BASE_ADDR;
 

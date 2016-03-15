@@ -19,8 +19,8 @@ CFLAGS?=-target patmos-unknown-unknown-elf -O3 \
 	-mpatmos-disable-vliw
 LDFLAGS?= \
 	-mpatmos-method-cache-size=0x2000 -mpatmos-preferred-subfunction-size=0 \
-	-mpatmos-stack-base=0x200000 -mpatmos-shadow-stack-base=0x1f8000 -lm
-	#-Xgold -T -Xgold ./spm_ram.t
+	-mpatmos-stack-base=0x200000 -mpatmos-shadow-stack-base=0x1f8000 -lm \
+	-Xgold -T -Xgold ./spm_ram.t
 	# Command for extracting the size of the ISPM allocated code:
 	# readelf -a main.elf | grep -m 1 ".text.spm" | awk '{print $6}'
 

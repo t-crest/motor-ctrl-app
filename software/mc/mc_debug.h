@@ -202,7 +202,7 @@ int debug_button_pressed(int buttons, int button_num);
  * @param dn index of axis being initialized
  * @param dp pointer to drive parameters structure
  */
-void init_debug (int dn, drive_params * dp);
+//void init_debug (int dn, _IODEV drive_params * dp);
 
 /**
  * @brief Put new values passed from system console GUI into drive parameters
@@ -210,7 +210,7 @@ void init_debug (int dn, drive_params * dp);
  * @param dn index of axis being written
  * @param dp pointer to drive parameters structure
  */
-void poll_debug (int dn, drive_params * dp);
+//void poll_debug (int dn, _IODEV drive_params * dp);
 
 /**
  * @brief Dump selected data to system console Tcl GUI
@@ -218,7 +218,7 @@ void poll_debug (int dn, drive_params * dp);
  * @param dp			pointer to drive_params struct
  * @param axis_select	axis to be dumped
  */
-void dump_data(drive_params * dp, int axis_select);
+void dump_data(_IODEV drive_params * dp, int axis_select);
 
 /*!
  * \addtogroup DEBUG_MSG Debug Message Handling

@@ -55,8 +55,8 @@
 void clark_transform_q10(
           short   i_u_q10,
           short   i_w_q10,
-           int     *i_alpha_q10,
-           int     *i_beta_q10
+           _IODEV int     *i_alpha_q10,
+           _IODEV int     *i_beta_q10
   ){
       *i_alpha_q10 = i_u_q10 ;
       *i_beta_q10  = (-591*(i_u_q10+(i_w_q10<<1)))>>10 ;  //1/sqrt(3)*(iu+2*iv)
@@ -68,8 +68,8 @@ void clark_transform_q10(
 void park_transformation_q10(
                         int Ialpha_q10,
                         int Ibeta_q10,
-                         int * Id_q10,
-                         int * Iq_q10,
+                         _IODEV int * Id_q10,
+                         _IODEV int * Iq_q10,
                         int sinVal_q15,
                         int cosVal_q15)
 {
@@ -83,8 +83,8 @@ void park_transformation_q10(
 void inverse_park_q10(
                     int Vd_q10,
                     int Vq_q10,
-                     int * pValpha_q10,
-                     int * pVbeta_q10,
+                     _IODEV int * pValpha_q10,
+                     _IODEV int * pVbeta_q10,
                     int sinVal_q15,
                     int cosVal_q15)
 {
@@ -96,7 +96,7 @@ void inverse_park_q10(
 //PI Controller
 //################################################################################################
 void PI_control_q15(
-   pi_instance_q15 * S,
+   _IODEV pi_instance_q15 * S,
    int resetStateFlag)
 {
     int error_input;
@@ -123,7 +123,7 @@ void PI_control_q15(
 //PI Controller Reset
 //################################################################################################
 void PI_reset_q15(
-   pi_instance_q15 * S)
+   _IODEV pi_instance_q15 * S)
 {
     // Clear the output and integrator
     S->output = 0;
@@ -133,7 +133,7 @@ void PI_reset_q15(
 //################################################################################################
 // Current Control
 //################################################################################################
-void current_control( pi_instance_q15 * SId, pi_instance_q15 * SIq){
+void current_control( _IODEV pi_instance_q15 * SId, _IODEV pi_instance_q15 * SIq){
 
 	PI_control_q15(SId,0);
 	PI_control_q15(SIq,0);
@@ -148,9 +148,9 @@ void svm(
                     int pwm_max,
                     int u_a,
                     int u_b,
-                     int * ru_out,
-                     int * rv_out,
-                     int * rw_out
+                     _IODEV int * ru_out,
+                     _IODEV int * rv_out,
+                     _IODEV int * rw_out
                     )
 {
     const short     c0577 = 18919 ; // 32768 / sqrt(3)

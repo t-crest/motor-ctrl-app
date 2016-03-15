@@ -43,11 +43,11 @@
  * @{
  */
 
-void init_dp(drive_params * dp) {
-	//dp[0].I_sat_limit = 3125;
-	//dp[0].V_sat_limit = 3000;
-	dp[0].I_sat_limit = 312;
-	dp[0].V_sat_limit = 300;
+void init_dp(_IODEV drive_params * dp) {
+//	dp[0].I_sat_limit = 3125;
+//	dp[0].V_sat_limit = 3000;
+	dp[0].I_sat_limit = 524;
+	dp[0].V_sat_limit = 500;
 
 	dp[0].Iq_Kp = 400; //Iq proportional gain constant
 	dp[0].Iq_Ki = 20; //Iq integral gain constant
@@ -61,14 +61,14 @@ void init_dp(drive_params * dp) {
 	dp[0].i_command_q = 100;
 
 	dp[0].encoder_length = 23;
-	//dp[0].speed_limit = 3000; // Setpoint / Initial Speed
-	dp[0].speed_limit = 60; // Setpoint / Initial Speed
+//	dp[0].speed_limit = 3000; // Setpoint / Initial Speed
+	dp[0].speed_limit = 600; // Setpoint / Initial Speed
 //	dp[0].speed_command = 200; // Setpoint / Initial Speed
-	dp[0].speed_command = 30; // Setpoint / Initial Speed
-	//dp[0].speed_Kp = 20000; // Kp_speed proportional parameter Speed Control
-	dp[0].speed_Kp = 20; // Kp_speed proportional parameter Speed Control
-	//dp[0].speed_Ki = 500; //Ki_speed integral    parameter Speed Control
-	dp[0].speed_Ki = 5; //Ki_speed integral    parameter Speed Control
+	dp[0].speed_command = 60; // Setpoint / Initial Speed
+//	dp[0].speed_Kp = 20000; // Kp_speed proportional parameter Speed Control
+	dp[0].speed_Kp = 200; // Kp_speed proportional parameter Speed Control
+//	dp[0].speed_Ki = 500; //Ki_speed integral    parameter Speed Control
+	dp[0].speed_Ki = 0; //Ki_speed integral    parameter Speed Control
 	dp[0].pos_Kp = 50;
 	dp[0].pos_spdff_Kp = 0;
 	dp[0].pos_setpoint = 100000; // Position 23 Bit = 8388607 count = 360°

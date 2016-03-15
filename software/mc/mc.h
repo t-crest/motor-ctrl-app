@@ -186,7 +186,7 @@ typedef struct
 	short I_sat_limit;				//!<Current saturation limit
 	short V_sat_limit;				//!<Voltage saturation limit
 
-	volatile int     Id;						//!<Id - Direct Current
+	int     Id;						//!<Id - Direct Current
 	int     Iq;						//!<Iq - Quadrature Current
 
 	short   Iq_Kp;					//!<Iq proportional gain constant
@@ -218,8 +218,8 @@ typedef struct
 
 	char    mpoles;    				//!<Set motor pole pairs
 	short   mphase;					//!<Phase offset
-	volatile int     i_command_d;			//!<Direct Current Command
-	volatile int     i_command_q;			//!<Quadrature Current Command
+	int     i_command_d;			//!<Direct Current Command
+	int     i_command_q;			//!<Quadrature Current Command
 
 	//Define PI controller structures
 	pi_instance_q15 Id_PI;      	//!<FOC Direct Current PI controller
@@ -271,22 +271,22 @@ typedef struct
 	volatile int     Offset_start_calc;
 	volatile int     Offset_U;
 	volatile int     Offset_W;
-	volatile short   Offset_err;
+	//volatile short   Offset_err;
 
 	//################################################################################################
 	//Speed variables
 	//################################################################################################
 	//Variables of speed calculations
 	//################################################################################################
-	int     speed_encoder;			//!<Actual measured Speed
+	volatile int     speed_encoder;			//!<Actual measured Speed
 	int     speed_resolver;			//!<Unused
 
 
 	//################################################################################################
 	//Encoder Variables
 	//################################################################################################
-	volatile short   enable_drive;			//!<Enables the PWM output
-	volatile short   enable_position_control;//!<Enables position control
+	short   enable_drive;			//!<Enables the PWM output
+	short   enable_position_control;//!<Enables position control
 
 	//################################################################################################
 	//EnDat variables
@@ -303,8 +303,8 @@ typedef struct
 	int        enc_data_prev;			//!<Encoder single & multi-turn data (previous value)
 	int        enc_turns;				//!<Encoder multi-turn data
 
-	volatile int        position_encoder;		//!<Position value derived from encoder including any multi-turn info
-	volatile int        position_setpoint;		//!<Position setpoint (desired position)
+	int        position_encoder;		//!<Position value derived from encoder including any multi-turn info
+	int        position_setpoint;		//!<Position setpoint (desired position)
 
 	int        sensor_warning_bits;
 	int        sensor_error_bits;
@@ -316,7 +316,7 @@ typedef struct
 	int    speed_Ki;					//!<Ki_speed integral    parameter Speed Control
 	int    speed_limit; 				//!<Speed is limited to this value
 	volatile int    speed_command;				//!<Speed request/command
-	int    speed_command_adjusted;		//!<Speed request/command after adjustment
+	volatile int    speed_command_adjusted;		//!<Speed request/command after adjustment
 	int    pos_setpoint;				//!<Position setpoint
 	int    pos_setpoint_adjusted;		//!<Position setpoint after adjustment
 	int    pos_Kp;						//!<Position PI controller Kp proportional gain
@@ -342,13 +342,13 @@ typedef struct
 	unsigned short status_word;
 	unsigned short state_act, state_act_old;
 
-	volatile int openloop_test;
+	int openloop_test;
 
 	volatile int reset_control;							//!<Resets the FOC control algorithm (PI control & Filter)
 
 } drive_params;
 
-void init_dp(drive_params * dp);
+void init_dp(_IODEV drive_params * dp);
 void drive_irq(void);
 void * get_dp(void);
 
